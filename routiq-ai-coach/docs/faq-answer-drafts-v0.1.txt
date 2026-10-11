@@ -1,0 +1,255 @@
+Q-001|Start with a small action you want to repeat and attach it to an existing routine. I can help plan an optional experiment, but this chat cannot save a habit.
+Q-002|Routiq is designed to help you plan habits, record activity, review progress and explore improvements. This Coach currently provides general advice; personal records are not connected.
+Q-003|Tell me the routine you want to build and an existing activity that could serve as a cue. We can explore a manageable starting action.
+Q-004|Choose a habit that matters to you and fits your circumstances, such as reading after a regular daily activity. I cannot select habits from a personal profile here.
+Q-005|Start with a manageable set of habits rather than changing everything at once. I cannot prescribe a personalized count or an unapproved Routiq limit.
+Q-006|In the approved design, Today shows scheduled habits and Habit Detail focuses on an individual habit. This notebook does not retrieve your saved habits.
+Q-007|The approved prototype illustrates marking a habit complete from Today. This Coach cannot save completions, and a prototype interaction does not confirm a real record.
+Q-008|I can discuss general habit ideas, routines and optional experiments. Personal progress, habit changes and saved conversation memory are not connected yet.
+Q-009|I cannot assess your history because it is not connected. Minimum-data rules for insights are also still TBD_PRODUCT_DECISION.
+Q-010|Choose a manageable action that matters to you. I cannot prioritize your actual scheduled habits without access to your Today records.
+Q-011|I cannot list your actual activities for today because your habit schedules are not connected.
+Q-012|Your Today habit list is not available to this Coach yet. The Today screen exists in the approved design, not as a connected notebook feature.
+Q-013|I need verified schedules to identify which habits are due today; those schedules are not connected here.
+Q-014|I cannot confirm what you finished today without saved completion records.
+Q-015|I cannot list pending habits without both your schedule and recorded activity statuses.
+Q-016|Today's completion rate needs verified scheduled and completed activities and an approved denominator rule. I cannot calculate it here.
+Q-017|I cannot confirm that you are done for today without your full verified schedule and completion records.
+Q-018|I cannot rank remaining habits without your schedule. You could choose a small action that fits the time you have available.
+Q-019|I cannot check whether reading is scheduled today because your reading settings are not connected.
+Q-020|I cannot identify the next scheduled habit without your schedule. Tell me the options if you want general planning help.
+Q-021|A verified daily summary needs today's schedule and saved activity records, which are not connected yet.
+Q-022|I cannot label today's activities missed without verified records and an approved day-boundary rule.
+Q-023|The approved design includes Create Habit with habit details and schedule choices. I can help describe a habit, but cannot create a saved record.
+Q-024|You can plan a reading habit. Describe the action and a useful cue; I can suggest wording, but cannot add it to your account.
+Q-025|The approved prototype includes a create-habit entry from Today. Production placement is unverified, and this notebook has no add-habit control.
+Q-026|The requirements include a habit name, description, category, recurrence, schedule, reminder and start-date configuration. Mandatory fields still need confirmed product rules.
+Q-027|Whether a habit can be created without a reminder is not confirmed for production. I will not assume reminders are mandatory or optional.
+Q-028|Use a clear action-based name, such as Read after breakfast, so the action is easy to recognize.
+Q-029|A description is included in the habit configuration requirements and design. This chat cannot save a description for you.
+Q-030|Choose a category that helps organize your habit. Meaningful categories and custom classification are required, but final production choices are unverified.
+Q-031|You could try reading a short passage after an activity you already do. Treat it as an optional experiment and adjust it to your circumstances.
+Q-032|Recurrence is part of Routiq's design, but an every-other-day production option has not been confirmed.
+Q-033|Choosing habit days is supported in the design. A weekday-only schedule is a planning example; I cannot set or verify it in your account.
+Q-034|Weekly recurrence is a planned configuration choice. Choose a day that fits your routine; this Coach cannot save it.
+Q-035|Selected weekdays are illustrated in the design, including a possible Monday and Friday schedule. I cannot save or confirm that configuration here.
+Q-036|The approved design includes schedule editing. This chat cannot change your days, and historical effects of edits remain unresolved.
+Q-037|A habit start date is included in the requirements. Supported date choices and production controls are unverified here.
+Q-038|I cannot explain a missing Today habit without its saved schedule and runtime context. I will not assume a scheduling, timezone or synchronization cause.
+Q-039|I cannot retrieve your next scheduled workout because workout settings are not connected.
+Q-040|Tomorrow's scheduled habits require verified schedules and day-boundary rules that are not available here.
+Q-041|Daily recurrence is part of the planned configuration. I can discuss a daily action, but cannot save that setting.
+Q-042|The effect of schedule changes on old results is TBD_PRODUCT_DECISION. I cannot promise preservation or recalculation.
+Q-043|The approved design includes Create/Edit Habit reached from a selected habit. This notebook cannot edit a saved record.
+Q-044|Renaming is part of the proposed edit flow, but I cannot rename your reading habit or confirm a saved change.
+Q-045|Reminder configuration belongs to habit settings in the design. I cannot retrieve or update your current reminder.
+Q-046|The design lets you select a habit from Today to view its details. This notebook cannot search or list saved habits.
+Q-047|Stopping tracking is a requirement, but pause, archive and deletion behavior is TBD_PRODUCT_DECISION. I cannot stop tracking or promise historical effects.
+Q-048|Archival behavior and its historical effects are TBD_PRODUCT_DECISION. This Coach cannot archive a habit.
+Q-049|Deletion is proposed, with unresolved history and retention rules. I cannot delete a habit or promise what happens to its records.
+Q-050|Deleted-habit restoration is not confirmed. I cannot promise that a deleted habit or its records can be recovered.
+Q-051|Deletion and historical-data behavior are TBD_PRODUCT_DECISION. I cannot say whether history will be erased or retained.
+Q-052|Category editing belongs to the planned configuration, but I cannot change a saved category or confirm final production choices.
+Q-053|I cannot verify today's workout record because saved activity data is not connected.
+Q-054|I cannot confirm whether reading is marked complete without its saved activity record.
+Q-055|I cannot list completed habits because your completion records are not connected.
+Q-056|I cannot explain a pending status without the habit's schedule and saved record. I will not assume a failed save or synchronization problem.
+Q-057|I cannot confirm that your tap saved. Only a verified response from the application's recording service can establish that.
+Q-058|This Coach cannot mark habits complete. The prototype demonstrates the interaction but does not save production activity records.
+Q-059|Undo and historical-record editing rules are TBD_PRODUCT_DECISION. I cannot undo completion through this chat.
+Q-060|Backdated completion is TBD_PRODUCT_DECISION. I cannot record yesterday as complete or assume that it is permitted.
+Q-061|I cannot explain a missed label without verified activity and approved day-boundary and status rules.
+Q-062|The meaning of skipped and its effects on progress are TBD_PRODUCT_DECISION. I cannot assume it means complete, missed or excluded.
+Q-063|I cannot rank your most-missed habits without verified schedules and activity history.
+Q-064|I cannot count missed workouts because workout schedules and activity records are not connected.
+Q-065|Yesterday's misses require verified schedules, activity records and an approved day boundary, none of which is connected here.
+Q-066|I cannot identify the days you miss reading without the reading habit's verified schedule and history.
+Q-067|I need comparable recent and earlier records before I can say misses are increasing.
+Q-068|I cannot show this week's missed habits without scheduled activities and verified completion records.
+Q-069|I cannot measure missed meditation activities without their schedule and activity history.
+Q-070|Habit records alone cannot establish why you missed an activity. Tell me what happened if you want to explore an optional adjustment.
+Q-071|I cannot confirm weekend clustering without comparable weekday and weekend records.
+Q-072|I cannot rank missed scheduled days until schedules, activity records and missed-status rules are available.
+Q-073|I cannot verify Monday's recorded status because activity history is not connected.
+Q-074|You could try a smaller action at the next suitable opportunity. This is optional; I cannot change or backfill activity records.
+Q-075|I cannot review your actual day without connected schedules and completion records.
+Q-076|Today's completion rate requires verified activity and an approved denominator. I cannot calculate it here.
+Q-077|I cannot count completed habits because today's completion records are not connected.
+Q-078|I cannot count scheduled habits because today's schedule is not connected.
+Q-079|I need verified records for today and yesterday under the same approved rules before comparing them.
+Q-080|I cannot say today was better without comparable records and a defined progress measure.
+Q-081|I cannot provide today's breakdown because scheduled and completed activity data is not connected.
+Q-082|I cannot verify that everything scheduled was completed without both the schedule and completion records.
+Q-083|I cannot count remaining activities because your schedules and saved statuses are not connected.
+Q-084|A verified daily summary is unavailable. Tell me what you did if you want a reflection based on your description, rather than a verified app record.
+Q-085|I cannot summarize your actual week because weekly habit records are not connected.
+Q-086|Weekly progress is part of Routiq's design, but this notebook cannot retrieve your weekly activity.
+Q-087|I cannot count this week's completed activities without verified completion records.
+Q-088|Weekly completion requires verified records and an approved denominator rule; neither is available here.
+Q-089|I cannot rank this week's habits without verified records and an approved ranking measure.
+Q-090|Attention-needed habits require connected records and approved attention thresholds that are not available here.
+Q-091|I cannot list this week's misses without schedules, activity records and missed-status rules.
+Q-092|I cannot summarize the last seven days without verified records for that date range.
+Q-093|Weekly consistency needs activity records and an approved calculation. I cannot measure it here.
+Q-094|I need comparable earlier and current records to explain what changed this week.
+Q-095|I cannot assess your reading week without verified reading records and a defined review measure.
+Q-096|A verified weekly review needs completed, scheduled and historical activity, which is not connected yet.
+Q-097|I cannot review your actual month because monthly activity records are not connected.
+Q-098|A monthly summary is part of the planned progress experience, but your monthly activity is not available here.
+Q-099|Monthly completion requires verified records and an approved denominator rule. I cannot calculate it here.
+Q-100|I need comparable habit records across periods before identifying improvement this month.
+Q-101|Declining habits require verified history and approved decline thresholds that are not available here.
+Q-102|I cannot count completed scheduled activities this month without verified schedules and activity data.
+Q-103|I need both months' records and consistent calculation rules before comparing them.
+Q-104|I cannot identify your strongest days without dated records and an approved comparison measure.
+Q-105|Monthly attention-needed indicators require verified records and approved thresholds that are not connected yet.
+Q-106|Monthly consistency needs activity history and an approved calculation. I cannot show it here.
+Q-107|I need verified activity for this week and last week before comparing them; better also needs a defined measure.
+Q-108|I cannot compare the months until both sets of records and consistent calculation rules are connected.
+Q-109|Improved workout consistency requires comparable workout records and an approved measure.
+Q-110|I need schedules and completion records for today and yesterday before comparing their progress.
+Q-111|I cannot judge last week's consistency without both periods' records and the same calculation rules.
+Q-112|I cannot describe historical changes without connected records. Tell me what you noticed if you want a general reflection.
+Q-113|I cannot compare the last two weeks until both periods' activity records are available.
+Q-114|I need current and previous monthly records to identify habits that improved.
+Q-115|Decline between periods needs comparable records and approved decline rules that are not connected here.
+Q-116|I cannot determine a consistency trend without verified history and approved calculation rules.
+Q-117|Your current streak is unavailable: activity records are not connected and streak rules are TBD_PRODUCT_DECISION.
+Q-118|I cannot calculate a longest streak without verified history and approved streak rules.
+Q-119|Reading continuity requires verified history and approved continuity rules that are not available here.
+Q-120|I cannot say whether a streak broke without verified records and approved streak-break rules.
+Q-121|I cannot explain a reset without recorded events and an approved reset rule. I will not assume its cause.
+Q-122|Whether skipping breaks a streak is TBD_PRODUCT_DECISION. I cannot decide that rule.
+Q-123|How pausing affects a streak is TBD_PRODUCT_DECISION. I cannot assume it freezes or breaks the streak.
+Q-124|I cannot compare habit streaks without verified histories and approved streak calculations.
+Q-125|Routiq's streak formula, including schedule and skip/pause handling, is TBD_PRODUCT_DECISION. I cannot supply an unapproved formula.
+Q-126|Streak recovery and backdated-recording rules are TBD_PRODUCT_DECISION. I cannot restore or promise recovery of a streak.
+Q-127|I cannot identify the hardest workout day without verified scheduled and completed workout records.
+Q-128|I cannot confirm more weekend misses without comparable weekday and weekend records.
+Q-129|Declining consistency requires verified history and an approved decline threshold, which are not available here.
+Q-130|I cannot identify a less-consistent habit until historical records and comparison rules are connected.
+Q-131|I cannot establish repeated misses without dated schedules and activity records.
+Q-132|I cannot identify reading patterns without verified reading history; I will not invent a pattern.
+Q-133|I need dated completion and schedule records before comparing early-week activity with other days.
+Q-134|I cannot locate a workout consistency drop without verified history and approved measurement rules.
+Q-135|Recurring missed-activity patterns need verified records. Misses do not by themselves explain their causes.
+Q-136|I cannot describe changes in your habit history because that history is not connected here.
+Q-137|This Coach has no verified habit data to analyze. General advice is not a finding about your records.
+Q-138|I cannot assess history sufficiency without connected history; minimum-data rules remain TBD_PRODUCT_DECISION.
+Q-139|Choose a habit that matters to you and feels difficult to maintain. I cannot rank priorities from your records, but can discuss a smaller action.
+Q-140|You could keep reading material near an existing daily cue and start with a short passage. This is an optional experiment, not a personal-data finding.
+Q-141|You could test a smaller action or a more convenient cue next week. Tell me the habit and constraints for general planning help.
+Q-142|Tell me the habit you want to simplify. We can discuss a smaller optional version; I cannot change its saved settings.
+Q-143|You could link the workout to a regular activity or prepare what you need ahead of time. These are optional general ideas.
+Q-144|I cannot choose an attention-needed habit from your records. Which habit would you most like to make easier?
+Q-145|Try attaching a small habit to an existing routine as an optional experiment, then reflect on whether it fits your day.
+Q-146|We can explore a schedule that fits your routine, but I cannot change it or guarantee improvement. Historical effects of edits remain unresolved.
+Q-147|You could resume with a manageable action at the next opportunity. This is an optional general suggestion, not a correction to recorded history.
+Q-148|A possible experiment is to make the action smaller and use a familiar cue. Tell me which habit you mean to provide useful context.
+Q-149|Choose manageable actions and cues that fit your routine, then adjust based on experience. There is no guaranteed routine for everyone.
+Q-150|I cannot make a data-backed recommendation because verified habit records are not connected. We can discuss an optional general experiment instead.
+Q-151|Include the suggestion you mean. Previous messages are not sent with this question, and current suggestions are not derived from your records.
+Q-152|No retrieved personal records support the current general suggestion. I should not describe it as evidence from your history.
+Q-153|No. Current suggestions are general or based on context in the current question, not retrieved habit history.
+Q-154|No verified personal pattern has been established. I cannot provide a calibrated confidence score for one.
+Q-155|Tell me the habit and the suggestion you want an alternative to. We can consider another optional general experiment.
+Q-156|Paste the recommendation you mean so I can explain it in this independent question. I cannot retrieve an earlier recommendation or its evidence.
+Q-157|No. Habit suggestions are optional experiments, and their outcomes are not guaranteed.
+Q-158|Suggestions are optional. This Coach does not modify habits or records if you choose not to use one.
+Q-159|I cannot retrieve where you left off because saved habits and earlier conversations are not connected. Tell me what you want to resume.
+Q-160|I cannot list previously tracked habits because account records are not connected.
+Q-161|I cannot summarize progress before your break without verified historical records.
+Q-162|I cannot show today's schedule after your break because habit settings are not connected.
+Q-163|You could restart with a small version of a habit that still matters to you. Tell me what you want to resume; I cannot restore saved habits automatically.
+Q-164|I cannot retrieve previous progress because historical activity is not connected.
+Q-165|I cannot identify recent habit activity without dated records.
+Q-166|I cannot assess recent-data sufficiency without connected history and approved minimum-data rules.
+Q-167|I cannot rank your most consistent habits without verified histories and an approved consistency measure.
+Q-168|I cannot verify maintained progress without comparable activity records across periods.
+Q-169|I cannot confirm steady reading consistency without reading history and approved calculation rules.
+Q-170|I need verified records for both months before comparing them.
+Q-171|You could review whether your chosen routine still fits your goals. I cannot select the next review from personal analytics yet.
+Q-172|Attention-needed habits require verified activity and approved thresholds. Tell me what feels difficult if you want general planning help.
+Q-173|I cannot summarize your strongest habits without records and a defined comparison measure.
+Q-174|You could try a smaller action or a different cue. This is an optional general experiment, not a data-backed recommendation.
+Q-175|Reminder configuration is included in the design. This notebook cannot schedule notifications; production permissions and controls still need confirmation.
+Q-176|I cannot retrieve your reading reminder time because habit settings are not connected.
+Q-177|Reminder editing is planned, but this Coach cannot change or confirm a reminder time.
+Q-178|I cannot diagnose a missing notification without permissions, settings and delivery evidence. I will not assume the cause.
+Q-179|Reminder preferences are planned, but final disable controls and permissions are unverified. This chat cannot switch notifications off.
+Q-180|I cannot check whether a habit has a reminder because its saved settings are not connected.
+Q-181|Notification preferences are proposed under account/settings. Final production navigation is unverified, and this notebook has no notification-settings screen.
+Q-182|Different reminder times on different days have not been confirmed as a production option. I cannot promise that capability.
+Q-183|The approved design uses Progress Overview for reviews. This notebook does not open a connected progress dashboard.
+Q-184|The approved design places individual history in Habit Detail. This Coach cannot retrieve actual history yet.
+Q-185|The approved prototype opens Habit Detail by selecting a habit from Today or Progress. This describes the design, not a connected mobile application.
+Q-186|Profile editing is mentioned in the requirements, but a final profile-edit screen and production route are unverified here.
+Q-187|The approved design includes a weekly period in Progress Overview. This notebook does not retrieve weekly analytics.
+Q-188|Today is a core screen in the approved prototype for scheduled daily habits. This notebook has no mobile navigation to that screen.
+Q-189|Create/Edit Habit is included in the design. I can discuss a change, but cannot save it or promise its effect on old records.
+Q-190|Notification preferences are proposed in account/settings architecture. Final controls and delivery behavior remain unverified.
+Q-191|The Coach design includes guidance from Today, Progress and Habit Detail. This notebook provides general live advice; data-backed recommendations are not connected.
+Q-192|The planned chart represents recorded and scheduled habit activity. Formulas and historical-edit effects remain TBD_PRODUCT_DECISION; I cannot inspect a chart's actual data.
+Q-193|No personal history is connected, so I cannot establish a trend. I will not assume you simply need more tracking days.
+Q-194|Consistency analysis needs verified activity and approved calculation rules, which are not connected here.
+Q-195|I cannot prescribe a minimum tracking duration. Data-sufficiency thresholds are TBD_PRODUCT_DECISION and the data service is not connected.
+Q-196|I cannot diagnose an empty chart without its records and runtime state. Missing data or loading problems cannot be assumed from this chat.
+Q-197|I cannot infer why you missed yesterday. Describe what happened if you want an optional adjustment, without treating it as a verified app finding.
+Q-198|Data-backed recommendations are not implemented here. General coaching is available, but I cannot diagnose another screen's failure from this question.
+Q-199|Minimum history for insights is TBD_PRODUCT_DECISION. I cannot invent a fixed amount, and your history is not connected here.
+Q-200|I cannot guess a completion rate. It must come from verified scheduled and completed activities using an approved formula.
+Q-201|How skipping counts toward missed status is TBD_PRODUCT_DECISION. I cannot assume it counts as a miss or is excluded.
+Q-202|Pause handling in completion denominators is TBD_PRODUCT_DECISION. I cannot say it raises, lowers or preserves the rate.
+Q-203|Completing a prior day's activity later is TBD_PRODUCT_DECISION. This Coach cannot backdate completion.
+Q-204|Historical effects of schedule edits are TBD_PRODUCT_DECISION. I cannot promise old progress is preserved or recalculated.
+Q-205|Deletion and historical-data retention are TBD_PRODUCT_DECISION. I cannot promise erasure or retention.
+Q-206|Editing past completion is TBD_PRODUCT_DECISION. This chat cannot modify historical activity.
+Q-207|Timezone changes and Today day boundaries are TBD_PRODUCT_DECISION. I cannot supply a cutoff or conversion rule.
+Q-208|Archived-habit inclusion in statistics is TBD_PRODUCT_DECISION. I cannot assume records remain included or are removed.
+Q-209|Duplicate-completion handling is TBD_PRODUCT_DECISION. I cannot promise repeated logs are ignored or counted.
+Q-210|Offline synchronization and conflict handling are TBD_PRODUCT_DECISION. This notebook does not queue or synchronize habit updates.
+Q-211|Hi! What habit or routine would you like help with?
+Q-212|Hello! I can help you explore general habits and routines. What would you like to work on?
+Q-213|Good morning! Would you like to plan a small action for your routine?
+Q-214|I am ready to help you think through habits and routines. What would you like to explore?
+Q-215|You are welcome. Let me know if you want another habit idea.
+Q-216|You are welcome. Suggestions are optional; choose what fits your routine.
+Q-217|Goodbye! Type exit in the notebook to stop the session and disable live mode.
+Q-218|Ask for general habit ideas, routine planning, optional experiments or help understanding Routiq's design. Personal records, changes and saved memory are not connected yet.
+Q-219|I focus on habits, routines and Routiq, so political or current-affairs questions are outside my scope.
+Q-220|Dinosaurs are outside this Coach's scope. I can help plan a learning or reading habit instead.
+Q-221|Writing programs is outside this habit Coach's scope. I can help plan a coding-practice routine instead.
+Q-222|Physics explanations are outside this Coach's scope. I can help plan a study habit instead.
+Q-223|This Coach focuses on habits and routines rather than general entertainment. Would you like a habit idea?
+Q-224|Writing workplace emails is outside this Coach's scope. I can help plan a routine for managing tasks instead.
+Q-225|Geography trivia is outside this habit Coach's scope. Would you like help with a learning routine?
+Q-226|Historical trivia is outside this Coach's scope. I can help plan a reading or study habit instead.
+Q-227|I cannot check current weather because this Coach has no real-time external information service.
+Q-228|I cannot retrieve cricket results. I can help with habits and routines instead.
+Q-229|I cannot retrieve Bitcoin prices or provide financial advice. This Coach focuses on habits and routines.
+Q-230|I cannot fetch current news. I can help plan a reading routine instead.
+Q-231|I cannot retrieve train schedules or live travel information. Please use an appropriate transport information service.
+Q-232|I cannot retrieve live stock prices or provide financial advice. This Coach focuses on habits and routines.
+Q-233|Missed habits cannot establish an ADHD diagnosis. Please discuss concerns with a qualified health professional; I can only offer general routine ideas.
+Q-234|I cannot determine whether you are depressed from chat or habit activity. Please discuss your concerns with a qualified health professional.
+Q-235|I cannot recommend stopping or changing medication. Speak with your prescribing clinician or a pharmacist before making changes.
+Q-236|I cannot identify a medical cause for tiredness from this question. A qualified health professional can assess persistent or concerning fatigue.
+Q-237|Missed workouts do not diagnose anxiety. Please seek qualified professional advice for diagnostic concerns.
+Q-238|I cannot recommend medicines or dosages. A qualified clinician or pharmacist can advise based on your circumstances.
+Q-239|I cannot make up a completion rate. It requires verified schedules and completed activities under an approved calculation.
+Q-240|I cannot guess a streak. Verified activity and approved streak rules are needed.
+Q-241|I cannot invent why you missed a workout. Tell me what happened if you want to discuss an optional adjustment.
+Q-242|I cannot pretend an activity was completed or change its records. A completion claim must be confirmed by the backend.
+Q-243|I cannot invent a trend without records. I can offer a general experiment without presenting it as a personal finding.
+Q-244|I cannot retrieve weather, and Today records are not connected, so I cannot list remaining habits. I can still discuss general routine planning.
+Q-245|I cannot show weekly records yet. For an optional general experiment, try making a habit smaller or linking it to an existing cue.
+Q-246|I cannot summarize the month or identify decline without verified monthly history and approved decline rules.
+Q-247|Hello! Workout history is not connected, so I cannot show it yet. You can ask for a general routine idea.
+Q-248|I cannot fetch cricket scores, and weekly habit data is not connected. I can help discuss a general habit plan instead.
+Q-249|I cannot calculate your streak without records, and whether skipping breaks it is TBD_PRODUCT_DECISION.
+Q-250|This notebook sends the supported part of a live question to OpenAI. Saved habit records, selected habit IDs and previous messages are not supplied as personal evidence. Production AI data permissions remain unresolved.
+Q-251|This notebook keeps temporary displayed chat history in memory and does not implement saved conversations. Production retention is TBD_PRODUCT_DECISION; provider-side handling is separate.
+Q-252|Here, /reset clears temporary history. Saved cell outputs remain until you clear them. This does not delete provider-held data; production chat-deletion rules are unresolved.
+Q-253|This Coach has no connected access to habit records. Production roles, permissions and access controls need approved decisions and implementation.
+Q-254|Here, /offline disables live requests and exit stops the session. Production AI recommendation opt-out controls and permissions remain TBD_PRODUCT_DECISION.
+Q-255|Habit-history export is not implemented here, and a production export capability has not been confirmed. I cannot export or promise a downloadable history file.

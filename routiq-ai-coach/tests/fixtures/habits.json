@@ -1,0 +1,10 @@
+{
+  "classification": "SYNTHETIC_TEST_FIXTURE_NOT_USER_ACTIVITY",
+  "metric_rules": "TBD_PRODUCT_DECISION",
+  "habits": [
+    {"id": "test-habit-a", "owner": "test-user-a", "name": "Read a page"},
+    {"id": "test-habit-b", "owner": "test-user-b", "name": "Practice drawing"}
+  ],
+  "events": [],
+  "notes": "No thresholds, streaks, completion denominators or real user history inferred."
+}

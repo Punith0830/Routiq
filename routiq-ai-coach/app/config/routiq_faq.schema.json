@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Routiq FAQ review dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "dataset_name", "language", "updated_on", "total_questions", "fields", "metadata", "questions"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "dataset_name": {"const": "Routiq AI Coach FAQ"},
+    "language": {"const": "en-IN"},
+    "updated_on": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "total_questions": {"type": "integer", "minimum": 1},
+    "fields": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+    "metadata": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "status", "answer_policy", "source_config", "source_config_version", "source_sha256", "reference_notebook", "note"],
+      "properties": {
+        "version": {"type": "string", "minLength": 1},
+        "status": {"const": "REVIEW"},
+        "answer_policy": {"const": "CURRENT_IMPLEMENTATION_WITH_EXPLICIT_DESIGN_AND_PRODUCT_LIMITS"},
+        "source_config": {"const": "routiq_chatbot.json"},
+        "source_config_version": {"type": "string", "minLength": 1},
+        "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "reference_notebook": {"type": "string", "minLength": 1},
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "questions": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "category", "question", "answer", "intent_id"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^Q-\\d{3}$"},
+          "category": {"type": "string", "minLength": 1},
+          "question": {"type": "string", "minLength": 1},
+          "answer": {"type": "string", "minLength": 1},
+          "intent_id": {"type": "string", "minLength": 1},
+          "link_text": {"type": "string", "minLength": 1},
+          "url": {"type": "string", "pattern": "^https://"}
+        },
+        "dependentRequired": {"url": ["link_text"], "link_text": ["url"]}
+      }
+    }
+  }
+}

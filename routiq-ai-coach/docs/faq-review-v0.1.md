@@ -1,0 +1,15 @@
+# Routiq FAQ sample answers
+
+Version 0.1. Status REVIEW. 2026-10-11.
+
+Human requested the OctaKidz reference format and sample answers for every Routiq sample question. Created app/config/routiq_faq.json: 255 question-answer records across 28 existing intent categories. No prior standalone FAQ dataset existed to overwrite. The supplied routiq_chatbot.json remains byte-identical; changing its strict source schema would break configuration validation and overwrite source provenance.
+
+Reference inspected: C:/Users/ADMIN/Downloads/octakidz_faq_assistant.ipynb. Cell 6 embeds its FAQ JSON in base64. Extracted that literal using AST and decoded it as data; no notebook cells, installation commands, agents or API requests executed. Reference required entry fields: id, category, question, answer; optional link_text and url. Root fields: schema_version, dataset_name, language, updated_on, total_questions, fields, questions. Routiq retains those fields, adds review/source metadata and per-entry intent_id for traceability. No OctaKidz business content copied. Optional links omitted because no confirmed Routiq help destinations were supplied.
+
+Sources and limits: all questions, Q-001–Q-255, and controlled intents come verbatim from routiq_chatbot.json v0.2.0. Product descriptions and planned navigation are bounded by approved requirements/architecture/prototype artifacts; planned screens are explicitly labeled as design, not working mobile features. Actual notebook implementation informs live/offline, independent questions, temporary history, /reset and absent data services. General suggestions remain optional. Medical questions receive a bounded referral response, without diagnosis or treatment claims.
+
+Answers describe current availability; they are sample editorial responses, not actual user findings. Data-dependent questions have specific no-data answers rather than fictional percentages, histories or causes. Skip/pause, denominator, streak, deletion/archival, backdating, timezone, duplicate recording, synchronization and production privacy decisions remain TBD_PRODUCT_DECISION. Privacy answers distinguish local history, notebook outputs and provider-side handling without promising provider deletion or retention behavior.
+
+Executed verification: valid Draft 2020-12 schema and FAQ JSON; 255 nonblank answers, unique IDs and questions, exact source question/intent preservation and complete one-to-one coverage. Every PRODUCT_RULE_UNRESOLVED answer retains TBD_PRODUCT_DECISION. No invented URLs or sample credential strings. Source SHA-256 remains 9BA2027729A85E1821F806E3FB6CFC74FEF1AB95427CBFAB402C6FC288FE0F15. This is static artifact validation, not a test of live responses or UX effectiveness. No paid calls or dependencies installed.
+
+Authoring ledger: docs/faq-answer-drafts-v0.1.txt. Validation contract: app/config/routiq_faq.schema.json. FAQ is not automatically loaded into the Coach; no routing or generation code changed in this request. Connecting curated answers and semantic matching is separate work. Status remains REVIEW rather than approved product policy. Existing engineering/UX approvals are unchanged.

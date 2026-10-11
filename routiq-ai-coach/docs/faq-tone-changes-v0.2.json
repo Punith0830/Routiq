@@ -1,0 +1,912 @@
+[
+  {
+    "id": "Q-001",
+    "before": "Start with a small action you want to repeat and attach it to an existing routine. I can help plan an optional experiment, but this chat cannot save a habit.",
+    "after": "Happy to help! Start with a small action you want to repeat and attach it to an existing routine. I can help plan an optional experiment, but this chat cannot save a habit."
+  },
+  {
+    "id": "Q-002",
+    "before": "Routiq is designed to help you plan habits, record activity, review progress and explore improvements. This Coach currently provides general advice; personal records are not connected.",
+    "after": "Thank you for asking. Routiq is designed to help you plan habits, record activity, review progress and explore improvements. This Coach currently provides general advice; personal records are not connected."
+  },
+  {
+    "id": "Q-003",
+    "before": "Tell me the routine you want to build and an existing activity that could serve as a cue. We can explore a manageable starting action.",
+    "after": "Of course—let’s start small. Tell me the routine you want to build and an existing activity that could serve as a cue. We can explore a manageable starting action."
+  },
+  {
+    "id": "Q-004",
+    "before": "Choose a habit that matters to you and fits your circumstances, such as reading after a regular daily activity. I cannot select habits from a personal profile here.",
+    "after": "Happy to help you get started. Choose a habit that matters to you and fits your circumstances, such as reading after a regular daily activity. I can’t select habits from a personal profile here."
+  },
+  {
+    "id": "Q-005",
+    "before": "Start with a manageable set of habits rather than changing everything at once. I cannot prescribe a personalized count or an unapproved Routiq limit.",
+    "after": "You could begin with a manageable set of habits and build from there at your own pace. There isn’t a personalized starting count or confirmed Routiq limit I can recommend here."
+  },
+  {
+    "id": "Q-008",
+    "before": "I can discuss general habit ideas, routines and optional experiments. Personal progress, habit changes and saved conversation memory are not connected yet.",
+    "after": "I’m happy to help. I can discuss general habit ideas, routines and optional experiments. Personal progress, habit changes and saved conversation memory are not connected yet."
+  },
+  {
+    "id": "Q-009",
+    "before": "I cannot assess your history because it is not connected. Minimum-data rules for insights are also still TBD_PRODUCT_DECISION.",
+    "after": "I’d need access to your verified history to answer accurately. That history isn’t connected here, and the minimum-data rules for insights are still being defined."
+  },
+  {
+    "id": "Q-010",
+    "before": "Choose a manageable action that matters to you. I cannot prioritize your actual scheduled habits without access to your Today records.",
+    "after": "You could focus on a manageable action that matters to you today. Your Today records aren’t connected here, so this is a general suggestion rather than a priority based on your saved habits."
+  },
+  {
+    "id": "Q-011",
+    "before": "I cannot list your actual activities for today because your habit schedules are not connected.",
+    "after": "I can’t list your actual activities for today because your habit schedules are not connected."
+  },
+  {
+    "id": "Q-014",
+    "before": "I cannot confirm what you finished today without saved completion records.",
+    "after": "I can’t confirm what you finished today without saved completion records."
+  },
+  {
+    "id": "Q-015",
+    "before": "I cannot list pending habits without both your schedule and recorded activity statuses.",
+    "after": "I’d need your verified schedule and saved completion states to show what is still pending. Those records aren’t connected in this FAQ preview yet."
+  },
+  {
+    "id": "Q-016",
+    "before": "Today's completion rate needs verified scheduled and completed activities and an approved denominator rule. I cannot calculate it here.",
+    "after": "Today's completion rate needs verified scheduled and completed activities and an approved denominator rule. I can’t calculate it here."
+  },
+  {
+    "id": "Q-017",
+    "before": "I cannot confirm that you are done for today without your full verified schedule and completion records.",
+    "after": "I can’t confirm that you are done for today without your full verified schedule and completion records."
+  },
+  {
+    "id": "Q-018",
+    "before": "I cannot rank remaining habits without your schedule. You could choose a small action that fits the time you have available.",
+    "after": "You could choose a small action that fits the time you have available. I’d need your actual schedule to identify which of your remaining habits comes next."
+  },
+  {
+    "id": "Q-019",
+    "before": "I cannot check whether reading is scheduled today because your reading settings are not connected.",
+    "after": "I can’t check whether reading is scheduled today because your reading settings are not connected."
+  },
+  {
+    "id": "Q-020",
+    "before": "I cannot identify the next scheduled habit without your schedule. Tell me the options if you want general planning help.",
+    "after": "I can’t identify the next scheduled habit without your schedule. Tell me the options if you want general planning help."
+  },
+  {
+    "id": "Q-022",
+    "before": "I cannot label today's activities missed without verified records and an approved day-boundary rule.",
+    "after": "I can’t label today's activities missed without verified records and an approved day-boundary rule."
+  },
+  {
+    "id": "Q-023",
+    "before": "The approved design includes Create Habit with habit details and schedule choices. I can help describe a habit, but cannot create a saved record.",
+    "after": "Happy to guide you. The approved design includes Create Habit with habit details and schedule choices. I can help describe a habit, but cannot create a saved record."
+  },
+  {
+    "id": "Q-024",
+    "before": "You can plan a reading habit. Describe the action and a useful cue; I can suggest wording, but cannot add it to your account.",
+    "after": "Happy to help you plan one. You can plan a reading habit. Describe the action and a useful cue; I can suggest wording, but cannot add it to your account."
+  },
+  {
+    "id": "Q-027",
+    "before": "Whether a habit can be created without a reminder is not confirmed for production. I will not assume reminders are mandatory or optional.",
+    "after": "Whether a habit can be created without a reminder is not confirmed for production. I won’t assume reminders are mandatory or optional."
+  },
+  {
+    "id": "Q-031",
+    "before": "You could try reading a short passage after an activity you already do. Treat it as an optional experiment and adjust it to your circumstances.",
+    "after": "Happy to help! You could try reading a short passage after an activity you already do. Treat it as an optional experiment and adjust it to your circumstances."
+  },
+  {
+    "id": "Q-033",
+    "before": "Choosing habit days is supported in the design. A weekday-only schedule is a planning example; I cannot set or verify it in your account.",
+    "after": "Choosing habit days is supported in the design. A weekday-only schedule is a planning example; I can’t set or verify it in your account."
+  },
+  {
+    "id": "Q-035",
+    "before": "Selected weekdays are illustrated in the design, including a possible Monday and Friday schedule. I cannot save or confirm that configuration here.",
+    "after": "Selected weekdays are illustrated in the design, including a possible Monday and Friday schedule. I can’t save or confirm that configuration here."
+  },
+  {
+    "id": "Q-038",
+    "before": "I cannot explain a missing Today habit without its saved schedule and runtime context. I will not assume a scheduling, timezone or synchronization cause.",
+    "after": "I can’t explain a missing Today habit without its saved schedule and runtime context. I won’t assume a scheduling, timezone or synchronization cause."
+  },
+  {
+    "id": "Q-039",
+    "before": "I cannot retrieve your next scheduled workout because workout settings are not connected.",
+    "after": "I can’t retrieve your next scheduled workout because workout settings are not connected."
+  },
+  {
+    "id": "Q-042",
+    "before": "The effect of schedule changes on old results is TBD_PRODUCT_DECISION. I cannot promise preservation or recalculation.",
+    "after": "The effect of schedule changes on old results is still being defined. I can’t promise preservation or recalculation."
+  },
+  {
+    "id": "Q-044",
+    "before": "Renaming is part of the proposed edit flow, but I cannot rename your reading habit or confirm a saved change.",
+    "after": "Renaming is part of the proposed edit flow, but I can’t rename your reading habit or confirm a saved change."
+  },
+  {
+    "id": "Q-045",
+    "before": "Reminder configuration belongs to habit settings in the design. I cannot retrieve or update your current reminder.",
+    "after": "Reminder configuration belongs to habit settings in the design. I can’t retrieve or update your current reminder."
+  },
+  {
+    "id": "Q-047",
+    "before": "Stopping tracking is a requirement, but pause, archive and deletion behavior is TBD_PRODUCT_DECISION. I cannot stop tracking or promise historical effects.",
+    "after": "Stopping tracking is a requirement, but pause, archive and deletion behavior is still being defined. I can’t stop tracking or promise historical effects."
+  },
+  {
+    "id": "Q-048",
+    "before": "Archival behavior and its historical effects are TBD_PRODUCT_DECISION. This Coach cannot archive a habit.",
+    "after": "Archival behavior and its historical effects are still being defined. This Coach cannot archive a habit."
+  },
+  {
+    "id": "Q-049",
+    "before": "Deletion is proposed, with unresolved history and retention rules. I cannot delete a habit or promise what happens to its records.",
+    "after": "Deletion is proposed, with unresolved history and retention rules. I can’t delete a habit or promise what happens to its records."
+  },
+  {
+    "id": "Q-050",
+    "before": "Deleted-habit restoration is not confirmed. I cannot promise that a deleted habit or its records can be recovered.",
+    "after": "Deleted-habit restoration is not confirmed. I can’t promise that a deleted habit or its records can be recovered."
+  },
+  {
+    "id": "Q-051",
+    "before": "Deletion and historical-data behavior are TBD_PRODUCT_DECISION. I cannot say whether history will be erased or retained.",
+    "after": "Deletion and historical-data behavior are still being defined. I can’t say whether history will be erased or retained."
+  },
+  {
+    "id": "Q-052",
+    "before": "Category editing belongs to the planned configuration, but I cannot change a saved category or confirm final production choices.",
+    "after": "Category editing belongs to the planned configuration, but I can’t change a saved category or confirm final production choices."
+  },
+  {
+    "id": "Q-053",
+    "before": "I cannot verify today's workout record because saved activity data is not connected.",
+    "after": "I can’t verify today's workout record because saved activity data is not connected."
+  },
+  {
+    "id": "Q-054",
+    "before": "I cannot confirm whether reading is marked complete without its saved activity record.",
+    "after": "I can’t confirm whether reading is marked complete without its saved activity record."
+  },
+  {
+    "id": "Q-055",
+    "before": "I cannot list completed habits because your completion records are not connected.",
+    "after": "I can’t list completed habits because your completion records are not connected."
+  },
+  {
+    "id": "Q-056",
+    "before": "I cannot explain a pending status without the habit's schedule and saved record. I will not assume a failed save or synchronization problem.",
+    "after": "I can’t explain a pending status without the habit's schedule and saved record. I won’t assume a failed save or synchronization problem."
+  },
+  {
+    "id": "Q-057",
+    "before": "I cannot confirm that your tap saved. Only a verified response from the application's recording service can establish that.",
+    "after": "I can’t confirm that your tap saved. Only a verified response from the application's recording service can establish that."
+  },
+  {
+    "id": "Q-059",
+    "before": "Undo and historical-record editing rules are TBD_PRODUCT_DECISION. I cannot undo completion through this chat.",
+    "after": "Undo and historical-record editing rules are still being defined. I can’t undo completion through this chat."
+  },
+  {
+    "id": "Q-060",
+    "before": "Backdated completion is TBD_PRODUCT_DECISION. I cannot record yesterday as complete or assume that it is permitted.",
+    "after": "Backdated completion is still being defined. I can’t record yesterday as complete or assume that it is permitted."
+  },
+  {
+    "id": "Q-061",
+    "before": "I cannot explain a missed label without verified activity and approved day-boundary and status rules.",
+    "after": "I can’t explain a missed label without verified activity and approved day-boundary and status rules."
+  },
+  {
+    "id": "Q-062",
+    "before": "The meaning of skipped and its effects on progress are TBD_PRODUCT_DECISION. I cannot assume it means complete, missed or excluded.",
+    "after": "The meaning of skipped and its effects on progress are still being defined. I can’t assume it means complete, missed or excluded."
+  },
+  {
+    "id": "Q-063",
+    "before": "I cannot rank your most-missed habits without verified schedules and activity history.",
+    "after": "I can’t rank your most-missed habits without verified schedules and activity history."
+  },
+  {
+    "id": "Q-064",
+    "before": "I cannot count missed workouts because workout schedules and activity records are not connected.",
+    "after": "I can’t count missed workouts because workout schedules and activity records are not connected."
+  },
+  {
+    "id": "Q-066",
+    "before": "I cannot identify the days you miss reading without the reading habit's verified schedule and history.",
+    "after": "I can’t identify the days you miss reading without the reading habit's verified schedule and history."
+  },
+  {
+    "id": "Q-068",
+    "before": "I cannot show this week's missed habits without scheduled activities and verified completion records.",
+    "after": "I can’t show this week's missed habits without scheduled activities and verified completion records."
+  },
+  {
+    "id": "Q-069",
+    "before": "I cannot measure missed meditation activities without their schedule and activity history.",
+    "after": "I can’t measure missed meditation activities without their schedule and activity history."
+  },
+  {
+    "id": "Q-071",
+    "before": "I cannot confirm weekend clustering without comparable weekday and weekend records.",
+    "after": "I can’t confirm weekend clustering without comparable weekday and weekend records."
+  },
+  {
+    "id": "Q-072",
+    "before": "I cannot rank missed scheduled days until schedules, activity records and missed-status rules are available.",
+    "after": "I can’t rank missed scheduled days until schedules, activity records and missed-status rules are available."
+  },
+  {
+    "id": "Q-073",
+    "before": "I cannot verify Monday's recorded status because activity history is not connected.",
+    "after": "I can’t verify Monday's recorded status because activity history is not connected."
+  },
+  {
+    "id": "Q-074",
+    "before": "You could try a smaller action at the next suitable opportunity. This is optional; I cannot change or backfill activity records.",
+    "after": "You could try a smaller action at the next suitable opportunity. This is optional; I can’t change or backfill activity records."
+  },
+  {
+    "id": "Q-075",
+    "before": "I cannot review your actual day without connected schedules and completion records.",
+    "after": "I can’t review your actual day without connected schedules and completion records."
+  },
+  {
+    "id": "Q-076",
+    "before": "Today's completion rate requires verified activity and an approved denominator. I cannot calculate it here.",
+    "after": "Today's completion rate requires verified activity and an approved denominator. I can’t calculate it here."
+  },
+  {
+    "id": "Q-077",
+    "before": "I cannot count completed habits because today's completion records are not connected.",
+    "after": "I can’t count completed habits because today's completion records are not connected."
+  },
+  {
+    "id": "Q-078",
+    "before": "I cannot count scheduled habits because today's schedule is not connected.",
+    "after": "I can’t count scheduled habits because today's schedule is not connected."
+  },
+  {
+    "id": "Q-080",
+    "before": "I cannot say today was better without comparable records and a defined progress measure.",
+    "after": "I can’t say today was better without comparable records and a defined progress measure."
+  },
+  {
+    "id": "Q-081",
+    "before": "I cannot provide today's breakdown because scheduled and completed activity data is not connected.",
+    "after": "I can’t provide today's breakdown because scheduled and completed activity data is not connected."
+  },
+  {
+    "id": "Q-082",
+    "before": "I cannot verify that everything scheduled was completed without both the schedule and completion records.",
+    "after": "I can’t verify that everything scheduled was completed without both the schedule and completion records."
+  },
+  {
+    "id": "Q-083",
+    "before": "I cannot count remaining activities because your schedules and saved statuses are not connected.",
+    "after": "I can’t count remaining activities because your schedules and saved statuses are not connected."
+  },
+  {
+    "id": "Q-085",
+    "before": "I cannot summarize your actual week because weekly habit records are not connected.",
+    "after": "I can’t summarize your actual week because weekly habit records are not connected."
+  },
+  {
+    "id": "Q-087",
+    "before": "I cannot count this week's completed activities without verified completion records.",
+    "after": "I can’t count this week's completed activities without verified completion records."
+  },
+  {
+    "id": "Q-089",
+    "before": "I cannot rank this week's habits without verified records and an approved ranking measure.",
+    "after": "I can’t rank this week's habits without verified records and an approved ranking measure."
+  },
+  {
+    "id": "Q-091",
+    "before": "I cannot list this week's misses without schedules, activity records and missed-status rules.",
+    "after": "I can’t list this week's misses without schedules, activity records and missed-status rules."
+  },
+  {
+    "id": "Q-092",
+    "before": "I cannot summarize the last seven days without verified records for that date range.",
+    "after": "I can’t summarize the last seven days without verified records for that date range."
+  },
+  {
+    "id": "Q-093",
+    "before": "Weekly consistency needs activity records and an approved calculation. I cannot measure it here.",
+    "after": "Weekly consistency needs activity records and an approved calculation. I can’t measure it here."
+  },
+  {
+    "id": "Q-095",
+    "before": "I cannot assess your reading week without verified reading records and a defined review measure.",
+    "after": "I can’t assess your reading week without verified reading records and a defined review measure."
+  },
+  {
+    "id": "Q-097",
+    "before": "I cannot review your actual month because monthly activity records are not connected.",
+    "after": "I can’t review your actual month because monthly activity records are not connected."
+  },
+  {
+    "id": "Q-099",
+    "before": "Monthly completion requires verified records and an approved denominator rule. I cannot calculate it here.",
+    "after": "Monthly completion requires verified records and an approved denominator rule. I can’t calculate it here."
+  },
+  {
+    "id": "Q-102",
+    "before": "I cannot count completed scheduled activities this month without verified schedules and activity data.",
+    "after": "I can’t count completed scheduled activities this month without verified schedules and activity data."
+  },
+  {
+    "id": "Q-104",
+    "before": "I cannot identify your strongest days without dated records and an approved comparison measure.",
+    "after": "I can’t identify your strongest days without dated records and an approved comparison measure."
+  },
+  {
+    "id": "Q-106",
+    "before": "Monthly consistency needs activity history and an approved calculation. I cannot show it here.",
+    "after": "Monthly consistency needs activity history and an approved calculation. I can’t show it here."
+  },
+  {
+    "id": "Q-108",
+    "before": "I cannot compare the months until both sets of records and consistent calculation rules are connected.",
+    "after": "I can’t compare the months until both sets of records and consistent calculation rules are connected."
+  },
+  {
+    "id": "Q-111",
+    "before": "I cannot judge last week's consistency without both periods' records and the same calculation rules.",
+    "after": "I can’t judge last week's consistency without both periods' records and the same calculation rules."
+  },
+  {
+    "id": "Q-112",
+    "before": "I cannot describe historical changes without connected records. Tell me what you noticed if you want a general reflection.",
+    "after": "I can’t describe historical changes without connected records. Tell me what you noticed if you want a general reflection."
+  },
+  {
+    "id": "Q-113",
+    "before": "I cannot compare the last two weeks until both periods' activity records are available.",
+    "after": "I can’t compare the last two weeks until both periods' activity records are available."
+  },
+  {
+    "id": "Q-116",
+    "before": "I cannot determine a consistency trend without verified history and approved calculation rules.",
+    "after": "I can’t determine a consistency trend without verified history and approved calculation rules."
+  },
+  {
+    "id": "Q-117",
+    "before": "Your current streak is unavailable: activity records are not connected and streak rules are TBD_PRODUCT_DECISION.",
+    "after": "Your current streak is unavailable: activity records are not connected and streak rules are still being defined."
+  },
+  {
+    "id": "Q-118",
+    "before": "I cannot calculate a longest streak without verified history and approved streak rules.",
+    "after": "I can’t calculate a longest streak without verified history and approved streak rules."
+  },
+  {
+    "id": "Q-120",
+    "before": "I cannot say whether a streak broke without verified records and approved streak-break rules.",
+    "after": "I can’t say whether a streak broke without verified records and approved streak-break rules."
+  },
+  {
+    "id": "Q-121",
+    "before": "I cannot explain a reset without recorded events and an approved reset rule. I will not assume its cause.",
+    "after": "I can’t explain a reset without recorded events and an approved reset rule. I won’t assume its cause."
+  },
+  {
+    "id": "Q-122",
+    "before": "Whether skipping breaks a streak is TBD_PRODUCT_DECISION. I cannot decide that rule.",
+    "after": "Whether skipping breaks a streak is still being defined. I can’t decide that rule."
+  },
+  {
+    "id": "Q-123",
+    "before": "How pausing affects a streak is TBD_PRODUCT_DECISION. I cannot assume it freezes or breaks the streak.",
+    "after": "How pausing affects a streak is still being defined. I can’t assume it freezes or breaks the streak."
+  },
+  {
+    "id": "Q-124",
+    "before": "I cannot compare habit streaks without verified histories and approved streak calculations.",
+    "after": "I can’t compare habit streaks without verified histories and approved streak calculations."
+  },
+  {
+    "id": "Q-125",
+    "before": "Routiq's streak formula, including schedule and skip/pause handling, is TBD_PRODUCT_DECISION. I cannot supply an unapproved formula.",
+    "after": "Routiq's streak formula, including schedule and skip/pause handling, is still being defined. I can’t supply an unapproved formula."
+  },
+  {
+    "id": "Q-126",
+    "before": "Streak recovery and backdated-recording rules are TBD_PRODUCT_DECISION. I cannot restore or promise recovery of a streak.",
+    "after": "Streak recovery and backdated-recording rules are still being defined. I can’t restore or promise recovery of a streak."
+  },
+  {
+    "id": "Q-127",
+    "before": "I cannot identify the hardest workout day without verified scheduled and completed workout records.",
+    "after": "I can’t identify the hardest workout day without verified scheduled and completed workout records."
+  },
+  {
+    "id": "Q-128",
+    "before": "I cannot confirm more weekend misses without comparable weekday and weekend records.",
+    "after": "I can’t confirm more weekend misses without comparable weekday and weekend records."
+  },
+  {
+    "id": "Q-130",
+    "before": "I cannot identify a less-consistent habit until historical records and comparison rules are connected.",
+    "after": "I can’t identify a less-consistent habit until historical records and comparison rules are connected."
+  },
+  {
+    "id": "Q-131",
+    "before": "I cannot establish repeated misses without dated schedules and activity records.",
+    "after": "I can’t establish repeated misses without dated schedules and activity records."
+  },
+  {
+    "id": "Q-132",
+    "before": "I cannot identify reading patterns without verified reading history; I will not invent a pattern.",
+    "after": "I can’t identify reading patterns without verified reading history; I won’t invent a pattern."
+  },
+  {
+    "id": "Q-134",
+    "before": "I cannot locate a workout consistency drop without verified history and approved measurement rules.",
+    "after": "I can’t locate a workout consistency drop without verified history and approved measurement rules."
+  },
+  {
+    "id": "Q-136",
+    "before": "I cannot describe changes in your habit history because that history is not connected here.",
+    "after": "I can’t describe changes in your habit history because that history is not connected here."
+  },
+  {
+    "id": "Q-138",
+    "before": "I cannot assess history sufficiency without connected history; minimum-data rules remain TBD_PRODUCT_DECISION.",
+    "after": "I can’t assess history sufficiency without connected history; minimum-data rules are still being defined."
+  },
+  {
+    "id": "Q-139",
+    "before": "Choose a habit that matters to you and feels difficult to maintain. I cannot rank priorities from your records, but can discuss a smaller action.",
+    "after": "Choose a habit that matters to you and feels difficult to maintain. I can’t rank priorities from your records, but can discuss a smaller action."
+  },
+  {
+    "id": "Q-140",
+    "before": "You could keep reading material near an existing daily cue and start with a short passage. This is an optional experiment, not a personal-data finding.",
+    "after": "Happy to help you explore this. You could keep reading material near an existing daily cue and start with a short passage. This is an optional experiment, not a personal-data finding."
+  },
+  {
+    "id": "Q-142",
+    "before": "Tell me the habit you want to simplify. We can discuss a smaller optional version; I cannot change its saved settings.",
+    "after": "Of course. Tell me the habit you want to simplify. We can discuss a smaller optional version; I can’t change its saved settings."
+  },
+  {
+    "id": "Q-144",
+    "before": "I cannot choose an attention-needed habit from your records. Which habit would you most like to make easier?",
+    "after": "Which habit would you most like to make easier? We can explore an optional adjustment together. I don’t have the verified records needed to select an attention-needed habit for you."
+  },
+  {
+    "id": "Q-145",
+    "before": "Try attaching a small habit to an existing routine as an optional experiment, then reflect on whether it fits your day.",
+    "after": "Happy to suggest an optional experiment. Try attaching a small habit to an existing routine as an optional experiment, then reflect on whether it fits your day."
+  },
+  {
+    "id": "Q-146",
+    "before": "We can explore a schedule that fits your routine, but I cannot change it or guarantee improvement. Historical effects of edits remain unresolved.",
+    "after": "We can explore a schedule that fits your routine, but I can’t change it or guarantee improvement. Historical effects of edits remain unresolved."
+  },
+  {
+    "id": "Q-148",
+    "before": "A possible experiment is to make the action smaller and use a familiar cue. Tell me which habit you mean to provide useful context.",
+    "after": "Let’s explore a manageable option. A possible experiment is to make the action smaller and use a familiar cue. Tell me which habit you mean to provide useful context."
+  },
+  {
+    "id": "Q-150",
+    "before": "I cannot make a data-backed recommendation because verified habit records are not connected. We can discuss an optional general experiment instead.",
+    "after": "I can’t make a data-backed recommendation because verified habit records are not connected. We can discuss an optional general experiment instead."
+  },
+  {
+    "id": "Q-151",
+    "before": "Include the suggestion you mean. Previous messages are not sent with this question, and current suggestions are not derived from your records.",
+    "after": "Please include the suggestion you mean so I can explain it clearly. Previous messages aren’t sent with this question, and current suggestions aren’t derived from your saved records."
+  },
+  {
+    "id": "Q-152",
+    "before": "No retrieved personal records support the current general suggestion. I should not describe it as evidence from your history.",
+    "after": "The current suggestion is general guidance, rather than a finding from your personal history. No retrieved habit records support it, so I don’t want to present it as a data-backed insight."
+  },
+  {
+    "id": "Q-154",
+    "before": "No verified personal pattern has been established. I cannot provide a calibrated confidence score for one.",
+    "after": "No verified personal pattern has been established. I can’t provide a calibrated confidence score for one."
+  },
+  {
+    "id": "Q-155",
+    "before": "Tell me the habit and the suggestion you want an alternative to. We can consider another optional general experiment.",
+    "after": "Happy to explore another option. Tell me the habit and the suggestion you want an alternative to. We can consider another optional general experiment."
+  },
+  {
+    "id": "Q-156",
+    "before": "Paste the recommendation you mean so I can explain it in this independent question. I cannot retrieve an earlier recommendation or its evidence.",
+    "after": "Of course. Paste the recommendation you mean so I can explain it in this independent question. I can’t retrieve an earlier recommendation or its evidence."
+  },
+  {
+    "id": "Q-157",
+    "before": "No. Habit suggestions are optional experiments, and their outcomes are not guaranteed.",
+    "after": "Suggestions are optional experiments, so a particular result isn’t guaranteed. You can choose what fits your routine and adjust based on your experience."
+  },
+  {
+    "id": "Q-158",
+    "before": "Suggestions are optional. This Coach does not modify habits or records if you choose not to use one.",
+    "after": "You’re free to decide whether a suggestion fits your routine. Suggestions are optional, and choosing not to use one does not change your habits or saved records."
+  },
+  {
+    "id": "Q-159",
+    "before": "I cannot retrieve where you left off because saved habits and earlier conversations are not connected. Tell me what you want to resume.",
+    "after": "I can’t retrieve where you left off because saved habits and earlier conversations are not connected. Tell me what you want to resume."
+  },
+  {
+    "id": "Q-160",
+    "before": "I cannot list previously tracked habits because account records are not connected.",
+    "after": "I can’t list previously tracked habits because account records are not connected."
+  },
+  {
+    "id": "Q-161",
+    "before": "I cannot summarize progress before your break without verified historical records.",
+    "after": "I can’t summarize progress before your break without verified historical records."
+  },
+  {
+    "id": "Q-162",
+    "before": "I cannot show today's schedule after your break because habit settings are not connected.",
+    "after": "I can’t show today's schedule after your break because habit settings are not connected."
+  },
+  {
+    "id": "Q-163",
+    "before": "You could restart with a small version of a habit that still matters to you. Tell me what you want to resume; I cannot restore saved habits automatically.",
+    "after": "You’re welcome to start small again. You could restart with a small version of a habit that still matters to you. Tell me what you want to resume; I can’t restore saved habits automatically."
+  },
+  {
+    "id": "Q-164",
+    "before": "I cannot retrieve previous progress because historical activity is not connected.",
+    "after": "I can’t retrieve previous progress because historical activity is not connected."
+  },
+  {
+    "id": "Q-165",
+    "before": "I cannot identify recent habit activity without dated records.",
+    "after": "I can’t identify recent habit activity without dated records."
+  },
+  {
+    "id": "Q-166",
+    "before": "I cannot assess recent-data sufficiency without connected history and approved minimum-data rules.",
+    "after": "I can’t assess recent-data sufficiency without connected history and approved minimum-data rules."
+  },
+  {
+    "id": "Q-167",
+    "before": "I cannot rank your most consistent habits without verified histories and an approved consistency measure.",
+    "after": "I can’t rank your most consistent habits without verified histories and an approved consistency measure."
+  },
+  {
+    "id": "Q-168",
+    "before": "I cannot verify maintained progress without comparable activity records across periods.",
+    "after": "I can’t verify maintained progress without comparable activity records across periods."
+  },
+  {
+    "id": "Q-169",
+    "before": "I cannot confirm steady reading consistency without reading history and approved calculation rules.",
+    "after": "I can’t confirm steady reading consistency without reading history and approved calculation rules."
+  },
+  {
+    "id": "Q-171",
+    "before": "You could review whether your chosen routine still fits your goals. I cannot select the next review from personal analytics yet.",
+    "after": "You could review whether your chosen routine still fits your goals. I can’t select the next review from personal analytics yet."
+  },
+  {
+    "id": "Q-173",
+    "before": "I cannot summarize your strongest habits without records and a defined comparison measure.",
+    "after": "I can’t summarize your strongest habits without records and a defined comparison measure."
+  },
+  {
+    "id": "Q-174",
+    "before": "You could try a smaller action or a different cue. This is an optional general experiment, not a data-backed recommendation.",
+    "after": "Happy to help you explore a next step. You could try a smaller action or a different cue. This is an optional general experiment, not a data-backed recommendation."
+  },
+  {
+    "id": "Q-175",
+    "before": "Reminder configuration is included in the design. This notebook cannot schedule notifications; production permissions and controls still need confirmation.",
+    "after": "Thank you for asking. Reminder configuration is included in the design. This notebook cannot schedule notifications; production permissions and controls still need confirmation."
+  },
+  {
+    "id": "Q-176",
+    "before": "I cannot retrieve your reading reminder time because habit settings are not connected.",
+    "after": "I can’t retrieve your reading reminder time because habit settings are not connected."
+  },
+  {
+    "id": "Q-178",
+    "before": "I cannot diagnose a missing notification without permissions, settings and delivery evidence. I will not assume the cause.",
+    "after": "I can’t diagnose a missing notification without permissions, settings and delivery evidence. I won’t assume the cause."
+  },
+  {
+    "id": "Q-180",
+    "before": "I cannot check whether a habit has a reminder because its saved settings are not connected.",
+    "after": "I can’t check whether a habit has a reminder because its saved settings are not connected."
+  },
+  {
+    "id": "Q-182",
+    "before": "Different reminder times on different days have not been confirmed as a production option. I cannot promise that capability.",
+    "after": "Different reminder times on different days have not been confirmed as a production option. I can’t promise that capability."
+  },
+  {
+    "id": "Q-183",
+    "before": "The approved design uses Progress Overview for reviews. This notebook does not open a connected progress dashboard.",
+    "after": "Happy to point you in the right direction. The approved design uses Progress Overview for reviews. This notebook does not open a connected progress dashboard."
+  },
+  {
+    "id": "Q-192",
+    "before": "The planned chart represents recorded and scheduled habit activity. Formulas and historical-edit effects remain TBD_PRODUCT_DECISION; I cannot inspect a chart's actual data.",
+    "after": "The planned chart represents recorded and scheduled habit activity. Formulas and historical-edit effects are still being defined; I can’t inspect a chart's actual data."
+  },
+  {
+    "id": "Q-193",
+    "before": "No personal history is connected, so I cannot establish a trend. I will not assume you simply need more tracking days.",
+    "after": "No personal history is connected, so I can’t establish a trend. I won’t assume you simply need more tracking days."
+  },
+  {
+    "id": "Q-195",
+    "before": "I cannot prescribe a minimum tracking duration. Data-sufficiency thresholds are TBD_PRODUCT_DECISION and the data service is not connected.",
+    "after": "I can’t prescribe a minimum tracking duration. Data-sufficiency thresholds are still being defined and the data service is not connected."
+  },
+  {
+    "id": "Q-196",
+    "before": "I cannot diagnose an empty chart without its records and runtime state. Missing data or loading problems cannot be assumed from this chat.",
+    "after": "I can’t diagnose an empty chart without its records and runtime state. Missing data or loading problems cannot be assumed from this chat."
+  },
+  {
+    "id": "Q-197",
+    "before": "I cannot infer why you missed yesterday. Describe what happened if you want an optional adjustment, without treating it as a verified app finding.",
+    "after": "I can’t infer why you missed yesterday. Describe what happened if you want an optional adjustment, without treating it as a verified app finding."
+  },
+  {
+    "id": "Q-198",
+    "before": "Data-backed recommendations are not implemented here. General coaching is available, but I cannot diagnose another screen's failure from this question.",
+    "after": "Data-backed recommendations are not implemented here. General coaching is available, but I can’t diagnose another screen's failure from this question."
+  },
+  {
+    "id": "Q-199",
+    "before": "Minimum history for insights is TBD_PRODUCT_DECISION. I cannot invent a fixed amount, and your history is not connected here.",
+    "after": "Minimum history for insights is still being defined. I can’t invent a fixed amount, and your history is not connected here."
+  },
+  {
+    "id": "Q-200",
+    "before": "I cannot guess a completion rate. It must come from verified scheduled and completed activities using an approved formula.",
+    "after": "I can’t guess a completion rate. It must come from verified scheduled and completed activities using an approved formula."
+  },
+  {
+    "id": "Q-201",
+    "before": "How skipping counts toward missed status is TBD_PRODUCT_DECISION. I cannot assume it counts as a miss or is excluded.",
+    "after": "Thank you for asking. How skipping counts toward missed status is still being defined. I can’t assume it counts as a miss or is excluded."
+  },
+  {
+    "id": "Q-202",
+    "before": "Pause handling in completion denominators is TBD_PRODUCT_DECISION. I cannot say it raises, lowers or preserves the rate.",
+    "after": "Thank you for checking. Pause handling in completion denominators is still being defined. I can’t say it raises, lowers or preserves the rate."
+  },
+  {
+    "id": "Q-203",
+    "before": "Completing a prior day's activity later is TBD_PRODUCT_DECISION. This Coach cannot backdate completion.",
+    "after": "Completing a prior day's activity later is still being defined. This Coach cannot backdate completion."
+  },
+  {
+    "id": "Q-204",
+    "before": "Historical effects of schedule edits are TBD_PRODUCT_DECISION. I cannot promise old progress is preserved or recalculated.",
+    "after": "Thank you for checking before making a change. Historical effects of schedule edits are still being defined. I can’t promise old progress is preserved or recalculated."
+  },
+  {
+    "id": "Q-205",
+    "before": "Deletion and historical-data retention are TBD_PRODUCT_DECISION. I cannot promise erasure or retention.",
+    "after": "Thank you for checking. Deletion and historical-data retention are still being defined. I can’t promise erasure or retention."
+  },
+  {
+    "id": "Q-206",
+    "before": "Editing past completion is TBD_PRODUCT_DECISION. This chat cannot modify historical activity.",
+    "after": "Editing past completion is still being defined. This chat cannot modify historical activity."
+  },
+  {
+    "id": "Q-207",
+    "before": "Timezone changes and Today day boundaries are TBD_PRODUCT_DECISION. I cannot supply a cutoff or conversion rule.",
+    "after": "Thank you for asking. Timezone changes and Today day boundaries are still being defined. I can’t supply a cutoff or conversion rule."
+  },
+  {
+    "id": "Q-208",
+    "before": "Archived-habit inclusion in statistics is TBD_PRODUCT_DECISION. I cannot assume records remain included or are removed.",
+    "after": "Archived-habit inclusion in statistics is still being defined. I can’t assume records remain included or are removed."
+  },
+  {
+    "id": "Q-209",
+    "before": "Duplicate-completion handling is TBD_PRODUCT_DECISION. I cannot promise repeated logs are ignored or counted.",
+    "after": "Duplicate-completion handling is still being defined. I can’t promise repeated logs are ignored or counted."
+  },
+  {
+    "id": "Q-210",
+    "before": "Offline synchronization and conflict handling are TBD_PRODUCT_DECISION. This notebook does not queue or synchronize habit updates.",
+    "after": "Offline synchronization and conflict handling are still being defined. This notebook does not queue or synchronize habit updates."
+  },
+  {
+    "id": "Q-211",
+    "before": "Hi! What habit or routine would you like help with?",
+    "after": "Hi! Happy to help. What habit or routine would you like to work on?"
+  },
+  {
+    "id": "Q-212",
+    "before": "Hello! I can help you explore general habits and routines. What would you like to work on?",
+    "after": "Hello! I’m happy to help you explore habits and routines. What would you like to work on?"
+  },
+  {
+    "id": "Q-214",
+    "before": "I am ready to help you think through habits and routines. What would you like to explore?",
+    "after": "Thank you for asking! I’m ready to help with habits and routines. What would you like to explore?"
+  },
+  {
+    "id": "Q-215",
+    "before": "You are welcome. Let me know if you want another habit idea.",
+    "after": "You’re welcome! I’m here whenever you’d like help with another habit idea."
+  },
+  {
+    "id": "Q-216",
+    "before": "You are welcome. Suggestions are optional; choose what fits your routine.",
+    "after": "You’re very welcome! Choose the suggestions that fit your routine, and feel free to explore another small step."
+  },
+  {
+    "id": "Q-217",
+    "before": "Goodbye! Type exit in the notebook to stop the session and disable live mode.",
+    "after": "You’re welcome to come back whenever you need a little guidance. Goodbye! In the notebook, type exit to stop the session and disable live mode."
+  },
+  {
+    "id": "Q-218",
+    "before": "Ask for general habit ideas, routine planning, optional experiments or help understanding Routiq's design. Personal records, changes and saved memory are not connected yet.",
+    "after": "I’m happy to help. Ask for general habit ideas, routine planning, optional experiments or help understanding Routiq's design. Personal records, changes and saved memory are not connected yet."
+  },
+  {
+    "id": "Q-227",
+    "before": "I cannot check current weather because this Coach has no real-time external information service.",
+    "after": "I can’t check current weather because this Coach has no real-time external information service."
+  },
+  {
+    "id": "Q-228",
+    "before": "I cannot retrieve cricket results. I can help with habits and routines instead.",
+    "after": "I can help with habits and routines, but I cannot retrieve cricket results. Would you like help planning a small step for your routine?"
+  },
+  {
+    "id": "Q-229",
+    "before": "I cannot retrieve Bitcoin prices or provide financial advice. This Coach focuses on habits and routines.",
+    "after": "I can’t retrieve Bitcoin prices or provide financial advice. This Coach focuses on habits and routines."
+  },
+  {
+    "id": "Q-230",
+    "before": "I cannot fetch current news. I can help plan a reading routine instead.",
+    "after": "I can’t fetch current news. I can help plan a reading routine instead."
+  },
+  {
+    "id": "Q-231",
+    "before": "I cannot retrieve train schedules or live travel information. Please use an appropriate transport information service.",
+    "after": "I can’t retrieve train schedules or live travel information. Please use an appropriate transport information service."
+  },
+  {
+    "id": "Q-232",
+    "before": "I cannot retrieve live stock prices or provide financial advice. This Coach focuses on habits and routines.",
+    "after": "I can’t retrieve live stock prices or provide financial advice. This Coach focuses on habits and routines."
+  },
+  {
+    "id": "Q-233",
+    "before": "Missed habits cannot establish an ADHD diagnosis. Please discuss concerns with a qualified health professional; I can only offer general routine ideas.",
+    "after": "Missing habits alone cannot establish an ADHD diagnosis. If you’re concerned, please speak with a qualified health professional. I can help you explore general routine ideas."
+  },
+  {
+    "id": "Q-234",
+    "before": "I cannot determine whether you are depressed from chat or habit activity. Please discuss your concerns with a qualified health professional.",
+    "after": "I can’t determine whether you’re depressed from chat or habit activity. Please speak with a qualified health professional about your concerns so you can receive appropriate support."
+  },
+  {
+    "id": "Q-235",
+    "before": "I cannot recommend stopping or changing medication. Speak with your prescribing clinician or a pharmacist before making changes.",
+    "after": "Please speak with your prescribing clinician or a pharmacist before stopping or changing medication. I can’t recommend a medication change, but I can help with general routine planning."
+  },
+  {
+    "id": "Q-236",
+    "before": "I cannot identify a medical cause for tiredness from this question. A qualified health professional can assess persistent or concerning fatigue.",
+    "after": "Tiredness can’t be explained from this question alone. Please speak with a qualified health professional if fatigue is persistent or concerning; I can’t identify a medical cause here."
+  },
+  {
+    "id": "Q-237",
+    "before": "Missed workouts do not diagnose anxiety. Please seek qualified professional advice for diagnostic concerns.",
+    "after": "Missed workouts don’t establish an anxiety diagnosis. Please speak with a qualified health professional about diagnostic concerns. I can offer general routine ideas."
+  },
+  {
+    "id": "Q-238",
+    "before": "I cannot recommend medicines or dosages. A qualified clinician or pharmacist can advise based on your circumstances.",
+    "after": "A qualified clinician or pharmacist can help you choose appropriate treatment for your circumstances. I can’t recommend medicines or dosages."
+  },
+  {
+    "id": "Q-239",
+    "before": "I cannot make up a completion rate. It requires verified schedules and completed activities under an approved calculation.",
+    "after": "I want to give you an accurate answer, so I won’t make up a completion rate. It needs verified scheduled and completed activities and an approved calculation."
+  },
+  {
+    "id": "Q-240",
+    "before": "I cannot guess a streak. Verified activity and approved streak rules are needed.",
+    "after": "I want to keep your progress information accurate, so I won’t guess your streak. Verified activity and approved streak rules are needed first."
+  },
+  {
+    "id": "Q-241",
+    "before": "I cannot invent why you missed a workout. Tell me what happened if you want to discuss an optional adjustment.",
+    "after": "I don’t want to assume why you missed a workout. If you’d like, tell me what happened and we can explore an optional adjustment."
+  },
+  {
+    "id": "Q-242",
+    "before": "I cannot pretend an activity was completed or change its records. A completion claim must be confirmed by the backend.",
+    "after": "I can help you plan your next step, but I can’t pretend an activity was completed or change its records. A completion must be confirmed by the backend."
+  },
+  {
+    "id": "Q-243",
+    "before": "I cannot invent a trend without records. I can offer a general experiment without presenting it as a personal finding.",
+    "after": "I can offer a general optional experiment, but I won’t invent a personal trend without verified records."
+  },
+  {
+    "id": "Q-244",
+    "before": "I cannot retrieve weather, and Today records are not connected, so I cannot list remaining habits. I can still discuss general routine planning.",
+    "after": "I can’t retrieve weather, and Today records are not connected, so I can’t list remaining habits. I can still discuss general routine planning."
+  },
+  {
+    "id": "Q-245",
+    "before": "I cannot show weekly records yet. For an optional general experiment, try making a habit smaller or linking it to an existing cue.",
+    "after": "I can’t show weekly records yet. For an optional general experiment, try making a habit smaller or linking it to an existing cue."
+  },
+  {
+    "id": "Q-246",
+    "before": "I cannot summarize the month or identify decline without verified monthly history and approved decline rules.",
+    "after": "I can’t summarize the month or identify decline without verified monthly history and approved decline rules."
+  },
+  {
+    "id": "Q-247",
+    "before": "Hello! Workout history is not connected, so I cannot show it yet. You can ask for a general routine idea.",
+    "after": "Hello! Workout history is not connected, so I can’t show it yet. You can ask for a general routine idea."
+  },
+  {
+    "id": "Q-248",
+    "before": "I cannot fetch cricket scores, and weekly habit data is not connected. I can help discuss a general habit plan instead.",
+    "after": "I can’t fetch cricket scores, and weekly habit data is not connected. I can help discuss a general habit plan instead."
+  },
+  {
+    "id": "Q-249",
+    "before": "I cannot calculate your streak without records, and whether skipping breaks it is TBD_PRODUCT_DECISION.",
+    "after": "I can’t calculate your streak without records, and whether skipping breaks it is still being defined."
+  },
+  {
+    "id": "Q-250",
+    "before": "This notebook sends the supported part of a live question to OpenAI. Saved habit records, selected habit IDs and previous messages are not supplied as personal evidence. Production AI data permissions remain unresolved.",
+    "after": "Thank you for checking how your data is used. This notebook sends the supported part of a live question to OpenAI. Saved habit records, selected habit IDs and previous messages are not supplied as personal evidence. Production AI data permissions remain unresolved."
+  },
+  {
+    "id": "Q-251",
+    "before": "This notebook keeps temporary displayed chat history in memory and does not implement saved conversations. Production retention is TBD_PRODUCT_DECISION; provider-side handling is separate.",
+    "after": "Thank you for asking about your privacy. This notebook keeps temporary displayed chat history in memory and does not implement saved conversations. Production retention is still being defined; provider-side handling is separate."
+  },
+  {
+    "id": "Q-253",
+    "before": "This Coach has no connected access to habit records. Production roles, permissions and access controls need approved decisions and implementation.",
+    "after": "Thank you for checking. This Coach has no connected access to habit records. Production roles, permissions and access controls need approved decisions and implementation."
+  },
+  {
+    "id": "Q-254",
+    "before": "Here, /offline disables live requests and exit stops the session. Production AI recommendation opt-out controls and permissions remain TBD_PRODUCT_DECISION.",
+    "after": "Here, /offline disables live requests and exit stops the session. Production AI recommendation opt-out controls and permissions are still being defined."
+  },
+  {
+    "id": "Q-255",
+    "before": "Habit-history export is not implemented here, and a production export capability has not been confirmed. I cannot export or promise a downloadable history file.",
+    "after": "Thank you for asking. Habit-history export is not implemented here, and a production export capability has not been confirmed. I can’t export or promise a downloadable history file."
+  }
+]

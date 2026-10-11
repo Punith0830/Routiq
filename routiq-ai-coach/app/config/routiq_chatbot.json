@@ -1,0 +1,3092 @@
+{
+  "document": {
+    "name": "Routiq AI Coach — Complete Proposed Chatbot Configuration",
+    "version": "0.2.0",
+    "status": "PROPOSED_NOT_PRODUCT_APPROVED",
+    "source_basis": [
+      "Routiq BRD",
+      "Gate 05 architecture review",
+      "Stage 06 screen inventory",
+      "Conversation-defined chatbot proposal"
+    ],
+    "note": "Questions are anticipated test utterances, not validated user research or production-ready training data. Intent labels and tool contracts are proposals."
+  },
+  "product": {
+    "name": "Routiq",
+    "assistant_name": "Routiq AI Coach",
+    "purpose": "Explain habit activity and progress, answer app-help questions, and suggest optional habit experiments.",
+    "supported_screen_contexts": [
+      "TODAY",
+      "PROGRESS",
+      "HABIT_DETAIL"
+    ],
+    "stage06_constraint": "Current approved Stage 06 inventory provides read-only contextual guidance, not an approved standalone conversational AI screen."
+  },
+  "counts": {
+    "question_count": 255,
+    "intent_count": 28,
+    "behavior_state_count": 8
+  },
+  "behavior_states": [
+    {
+      "id": "BEH-001",
+      "name": "NEW_USER",
+      "description": "Insufficient tracking history for reliable user-specific pattern claims",
+      "detection_rule": "TBD_PRODUCT_DECISION",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-002",
+      "name": "ACTIVE_TRACKER",
+      "description": "Has recorded activity; eligibility for analytics depends on data sufficiency",
+      "detection_rule": "TBD_PRODUCT_DECISION",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-003",
+      "name": "DECLINING_CONSISTENCY",
+      "description": "Decline detected only using an approved analytics rule",
+      "detection_rule": "TBD_PRODUCT_DECISION",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-004",
+      "name": "HIGH_CONSISTENCY",
+      "description": "High consistency detected only using an approved analytics rule",
+      "detection_rule": "TBD_PRODUCT_DECISION",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-005",
+      "name": "REPEATED_MISSES",
+      "description": "Repeated missed scheduled activity under an approved rule",
+      "detection_rule": "TBD_PRODUCT_DECISION",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-006",
+      "name": "RETURNING_USER",
+      "description": "Historical activity exists but recent recording has paused under an approved rule",
+      "detection_rule": "TBD_PRODUCT_DECISION",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-007",
+      "name": "TODAY_INCOMPLETE",
+      "description": "Scheduled habits remain pending today",
+      "detection_rule": "pending_scheduled_habits > 0",
+      "may_coexist_with_other_states": true
+    },
+    {
+      "id": "BEH-008",
+      "name": "TODAY_COMPLETE",
+      "description": "All scheduled habits today are confirmed complete and scheduled count is positive",
+      "detection_rule": "scheduled_count > 0 AND confirmed_completed_count == scheduled_count",
+      "may_coexist_with_other_states": true
+    }
+  ],
+  "agents": [
+    {
+      "id": "HABIT_COACH",
+      "role": "User-facing synthesis, product guidance and grounded clarification"
+    },
+    {
+      "id": "PROGRESS_ANALYST",
+      "role": "Interpret service-calculated metrics without fabricating statistics"
+    },
+    {
+      "id": "RECOMMENDATION_AGENT",
+      "role": "Offer optional experiments based on verified evidence"
+    }
+  ],
+  "non_agent_handlers": [
+    "SCOPE_ROUTER",
+    "SAFETY_ROUTER",
+    "BEHAVIOR_DETECTOR",
+    "CONFIG_LOADER",
+    "RESPONSE_VALIDATOR"
+  ],
+  "intents": [
+    {
+      "id": "GETTING_STARTED",
+      "description": "Getting Started",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-001",
+        "Q-002",
+        "Q-003",
+        "Q-004",
+        "Q-005",
+        "Q-006",
+        "Q-007",
+        "Q-008",
+        "Q-009",
+        "Q-010"
+      ]
+    },
+    {
+      "id": "TODAY_OVERVIEW",
+      "description": "Today Overview",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [
+        "get_today_habits",
+        "get_daily_progress"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-011",
+        "Q-012",
+        "Q-013",
+        "Q-014",
+        "Q-015",
+        "Q-016",
+        "Q-017",
+        "Q-018",
+        "Q-019",
+        "Q-020",
+        "Q-021",
+        "Q-022"
+      ]
+    },
+    {
+      "id": "HABIT_CREATION_HELP",
+      "description": "Habit Creation Help",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-023",
+        "Q-024",
+        "Q-025",
+        "Q-026",
+        "Q-027",
+        "Q-028",
+        "Q-029",
+        "Q-030",
+        "Q-031",
+        "Q-032"
+      ]
+    },
+    {
+      "id": "HABIT_SCHEDULING",
+      "description": "Habit Scheduling",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-033",
+        "Q-034",
+        "Q-035",
+        "Q-036",
+        "Q-037",
+        "Q-038",
+        "Q-039",
+        "Q-040",
+        "Q-041",
+        "Q-042"
+      ]
+    },
+    {
+      "id": "HABIT_MANAGEMENT",
+      "description": "Habit Management",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-043",
+        "Q-044",
+        "Q-045",
+        "Q-046",
+        "Q-047",
+        "Q-048",
+        "Q-049",
+        "Q-050",
+        "Q-051",
+        "Q-052"
+      ]
+    },
+    {
+      "id": "COMPLETION_STATUS",
+      "description": "Completion Status",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [
+        "get_today_habits",
+        "get_daily_progress"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-053",
+        "Q-054",
+        "Q-055",
+        "Q-056",
+        "Q-057",
+        "Q-058",
+        "Q-059",
+        "Q-060",
+        "Q-061",
+        "Q-062"
+      ]
+    },
+    {
+      "id": "MISSED_HABITS",
+      "description": "Missed Habits",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [
+        "get_habit_history",
+        "get_habit_trend"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-063",
+        "Q-064",
+        "Q-065",
+        "Q-066",
+        "Q-067",
+        "Q-068",
+        "Q-069",
+        "Q-070",
+        "Q-071",
+        "Q-072",
+        "Q-073",
+        "Q-074"
+      ]
+    },
+    {
+      "id": "DAILY_PROGRESS",
+      "description": "Daily Progress",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [
+        "get_today_habits",
+        "get_daily_progress"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-075",
+        "Q-076",
+        "Q-077",
+        "Q-078",
+        "Q-079",
+        "Q-080",
+        "Q-081",
+        "Q-082",
+        "Q-083",
+        "Q-084"
+      ]
+    },
+    {
+      "id": "WEEKLY_PROGRESS",
+      "description": "Weekly Progress",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [
+        "get_weekly_progress"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-085",
+        "Q-086",
+        "Q-087",
+        "Q-088",
+        "Q-089",
+        "Q-090",
+        "Q-091",
+        "Q-092",
+        "Q-093",
+        "Q-094",
+        "Q-095",
+        "Q-096"
+      ]
+    },
+    {
+      "id": "MONTHLY_PROGRESS",
+      "description": "Monthly Progress",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [
+        "get_monthly_progress"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-097",
+        "Q-098",
+        "Q-099",
+        "Q-100",
+        "Q-101",
+        "Q-102",
+        "Q-103",
+        "Q-104",
+        "Q-105",
+        "Q-106"
+      ]
+    },
+    {
+      "id": "PERIOD_COMPARISON",
+      "description": "Period Comparison",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [
+        "get_habit_history",
+        "get_habit_trend"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-107",
+        "Q-108",
+        "Q-109",
+        "Q-110",
+        "Q-111",
+        "Q-112",
+        "Q-113",
+        "Q-114",
+        "Q-115",
+        "Q-116"
+      ]
+    },
+    {
+      "id": "STREAKS",
+      "description": "Streaks",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-117",
+        "Q-118",
+        "Q-119",
+        "Q-120",
+        "Q-121",
+        "Q-122",
+        "Q-123",
+        "Q-124",
+        "Q-125",
+        "Q-126"
+      ]
+    },
+    {
+      "id": "PATTERN_ANALYSIS",
+      "description": "Pattern Analysis",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [
+        "get_habit_history",
+        "get_habit_trend"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-127",
+        "Q-128",
+        "Q-129",
+        "Q-130",
+        "Q-131",
+        "Q-132",
+        "Q-133",
+        "Q-134",
+        "Q-135",
+        "Q-136",
+        "Q-137",
+        "Q-138"
+      ]
+    },
+    {
+      "id": "IMPROVEMENT_RECOMMENDATION",
+      "description": "Improvement Recommendation",
+      "primary_handler": "RECOMMENDATION_AGENT",
+      "required_tools": [
+        "get_habit_details",
+        "get_habit_history"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-139",
+        "Q-140",
+        "Q-141",
+        "Q-142",
+        "Q-143",
+        "Q-144",
+        "Q-145",
+        "Q-146",
+        "Q-147",
+        "Q-148",
+        "Q-149",
+        "Q-150"
+      ]
+    },
+    {
+      "id": "RECOMMENDATION_EXPLANATION",
+      "description": "Recommendation Explanation",
+      "primary_handler": "RECOMMENDATION_AGENT",
+      "required_tools": [
+        "get_habit_details",
+        "get_habit_history"
+      ],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-151",
+        "Q-152",
+        "Q-153",
+        "Q-154",
+        "Q-155",
+        "Q-156",
+        "Q-157",
+        "Q-158"
+      ]
+    },
+    {
+      "id": "RETURNING_USER",
+      "description": "Returning User",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-159",
+        "Q-160",
+        "Q-161",
+        "Q-162",
+        "Q-163",
+        "Q-164",
+        "Q-165",
+        "Q-166"
+      ]
+    },
+    {
+      "id": "HIGH_CONSISTENCY",
+      "description": "High Consistency",
+      "primary_handler": "PROGRESS_ANALYST",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-167",
+        "Q-168",
+        "Q-169",
+        "Q-170",
+        "Q-171",
+        "Q-172",
+        "Q-173",
+        "Q-174"
+      ]
+    },
+    {
+      "id": "REMINDERS",
+      "description": "Reminders",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-175",
+        "Q-176",
+        "Q-177",
+        "Q-178",
+        "Q-179",
+        "Q-180",
+        "Q-181",
+        "Q-182"
+      ]
+    },
+    {
+      "id": "APP_HELP",
+      "description": "App Help",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-183",
+        "Q-184",
+        "Q-185",
+        "Q-186",
+        "Q-187",
+        "Q-188",
+        "Q-189",
+        "Q-190",
+        "Q-191",
+        "Q-192"
+      ]
+    },
+    {
+      "id": "INSUFFICIENT_DATA",
+      "description": "Insufficient Data",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-193",
+        "Q-194",
+        "Q-195",
+        "Q-196",
+        "Q-197",
+        "Q-198",
+        "Q-199",
+        "Q-200"
+      ]
+    },
+    {
+      "id": "PRODUCT_RULE_UNRESOLVED",
+      "description": "Product Rule Unresolved",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "BLOCKED_BY_PRODUCT_DECISION",
+      "sample_question_ids": [
+        "Q-201",
+        "Q-202",
+        "Q-203",
+        "Q-204",
+        "Q-205",
+        "Q-206",
+        "Q-207",
+        "Q-208",
+        "Q-209",
+        "Q-210"
+      ]
+    },
+    {
+      "id": "CASUAL_CONVERSATION",
+      "description": "Casual Conversation",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-211",
+        "Q-212",
+        "Q-213",
+        "Q-214",
+        "Q-215",
+        "Q-216",
+        "Q-217",
+        "Q-218"
+      ]
+    },
+    {
+      "id": "IRRELEVANT_GENERAL_QUERY",
+      "description": "Irrelevant General Query",
+      "primary_handler": "SCOPE_ROUTER",
+      "required_tools": [],
+      "classification": "OUT_OF_SCOPE",
+      "sample_question_ids": [
+        "Q-219",
+        "Q-220",
+        "Q-221",
+        "Q-222",
+        "Q-223",
+        "Q-224",
+        "Q-225",
+        "Q-226"
+      ]
+    },
+    {
+      "id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "description": "Real Time External Information",
+      "primary_handler": "SCOPE_ROUTER",
+      "required_tools": [],
+      "classification": "OUT_OF_SCOPE",
+      "sample_question_ids": [
+        "Q-227",
+        "Q-228",
+        "Q-229",
+        "Q-230",
+        "Q-231",
+        "Q-232"
+      ]
+    },
+    {
+      "id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "description": "Medical Or Diagnostic Query",
+      "primary_handler": "SAFETY_ROUTER",
+      "required_tools": [],
+      "classification": "SAFETY_RESPONSE",
+      "sample_question_ids": [
+        "Q-233",
+        "Q-234",
+        "Q-235",
+        "Q-236",
+        "Q-237",
+        "Q-238"
+      ]
+    },
+    {
+      "id": "FABRICATED_DATA_REQUEST",
+      "description": "Fabricated Data Request",
+      "primary_handler": "SAFETY_ROUTER",
+      "required_tools": [],
+      "classification": "SAFETY_RESPONSE",
+      "sample_question_ids": [
+        "Q-239",
+        "Q-240",
+        "Q-241",
+        "Q-242",
+        "Q-243"
+      ]
+    },
+    {
+      "id": "MULTI_INTENT",
+      "description": "Multi Intent",
+      "primary_handler": "SCOPE_ROUTER",
+      "required_tools": [],
+      "classification": "SUPPORTED_WITH_DATA_CHECK",
+      "sample_question_ids": [
+        "Q-244",
+        "Q-245",
+        "Q-246",
+        "Q-247",
+        "Q-248",
+        "Q-249"
+      ]
+    },
+    {
+      "id": "PRIVACY_AND_DATA",
+      "description": "Privacy And Data",
+      "primary_handler": "HABIT_COACH",
+      "required_tools": [],
+      "classification": "BLOCKED_BY_PRODUCT_DECISION",
+      "sample_question_ids": [
+        "Q-250",
+        "Q-251",
+        "Q-252",
+        "Q-253",
+        "Q-254",
+        "Q-255"
+      ]
+    }
+  ],
+  "sample_questions": [
+    {
+      "id": "Q-001",
+      "text": "What should I do first?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-002",
+      "text": "How does Routiq work?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-003",
+      "text": "Can you help me start a routine?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-004",
+      "text": "What habits should I track first?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-005",
+      "text": "How many habits should I start with?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-006",
+      "text": "Where do I see my habits?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-007",
+      "text": "How do I check off a habit?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-008",
+      "text": "What can you help me with?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-009",
+      "text": "Do I have enough data for insights?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-010",
+      "text": "What should I focus on today?",
+      "intent_id": "GETTING_STARTED",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-011",
+      "text": "What do I have to do today?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-012",
+      "text": "Show my habits for today.",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-013",
+      "text": "Which habits are scheduled today?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-014",
+      "text": "What have I finished today?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-015",
+      "text": "What is still pending?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-016",
+      "text": "How much of today is complete?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-017",
+      "text": "Am I done for today?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-018",
+      "text": "What should I tackle next?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-019",
+      "text": "Is reading scheduled today?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-020",
+      "text": "Which habit comes next?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-021",
+      "text": "Give me a quick daily summary.",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-022",
+      "text": "What did I miss today?",
+      "intent_id": "TODAY_OVERVIEW",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-023",
+      "text": "How do I create a habit?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-024",
+      "text": "Can I add a reading habit?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-025",
+      "text": "Where is the add habit option?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-026",
+      "text": "What details do I need for a new habit?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-027",
+      "text": "Can I create a habit without a reminder?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-028",
+      "text": "How do I name my habit?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-029",
+      "text": "Can I add a description?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-030",
+      "text": "How do I choose a category?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-031",
+      "text": "Can you suggest a small starting habit?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-032",
+      "text": "Can I track a habit every other day?",
+      "intent_id": "HABIT_CREATION_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-033",
+      "text": "Can I schedule this on weekdays?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-034",
+      "text": "How do I make a habit weekly?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-035",
+      "text": "Can I choose Monday and Friday?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-036",
+      "text": "How do I change the days?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-037",
+      "text": "Can I set a start date?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-038",
+      "text": "Why is this habit not on Today?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-039",
+      "text": "When is my next scheduled workout?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-040",
+      "text": "Show my scheduled habits for tomorrow.",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-041",
+      "text": "Can I make a habit daily?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-042",
+      "text": "Does changing the schedule change old results?",
+      "intent_id": "HABIT_SCHEDULING",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-043",
+      "text": "How do I edit a habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-044",
+      "text": "Can I rename my reading habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-045",
+      "text": "Where can I update my reminder?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-046",
+      "text": "How do I find an existing habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-047",
+      "text": "Can I stop tracking a habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-048",
+      "text": "Can I archive this habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-049",
+      "text": "Can I delete a habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-050",
+      "text": "Can I restore a deleted habit?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-051",
+      "text": "What happens to history if I delete it?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-052",
+      "text": "Can I change my habit category?",
+      "intent_id": "HABIT_MANAGEMENT",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-053",
+      "text": "Did I record my workout today?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-054",
+      "text": "Is my reading marked complete?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-055",
+      "text": "Which habits have I completed?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-056",
+      "text": "Why does this show pending?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-057",
+      "text": "Did my last tap save?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-058",
+      "text": "Can I mark this complete?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-059",
+      "text": "Can I undo completion?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-060",
+      "text": "Can I record yesterday as complete?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-061",
+      "text": "Why is this habit marked missed?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-062",
+      "text": "What does skipped mean?",
+      "intent_id": "COMPLETION_STATUS",
+      "applicable_states": [
+        "TODAY_INCOMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-063",
+      "text": "Which habit do I miss most?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-064",
+      "text": "How many workouts did I miss?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-065",
+      "text": "What did I miss yesterday?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-066",
+      "text": "Which days do I miss reading?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-067",
+      "text": "Am I missing more habits lately?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-068",
+      "text": "Show missed habits this week.",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-069",
+      "text": "How often do I miss meditation?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-070",
+      "text": "Why did I miss my habit?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-071",
+      "text": "Do my misses cluster on weekends?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-072",
+      "text": "Which habit has the most missed scheduled days?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-073",
+      "text": "Was Monday recorded as missed?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-074",
+      "text": "What can I try after a missed day?",
+      "intent_id": "MISSED_HABITS",
+      "applicable_states": [
+        "REPEATED_MISSES"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-075",
+      "text": "How did I do today?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-076",
+      "text": "What is my completion rate today?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-077",
+      "text": "How many habits did I complete?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-078",
+      "text": "How many were scheduled?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-079",
+      "text": "Compare today with yesterday.",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-080",
+      "text": "Was today better than yesterday?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-081",
+      "text": "Show today’s progress breakdown.",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-082",
+      "text": "Did I complete everything scheduled?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-083",
+      "text": "How many are left?",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-084",
+      "text": "Give me a short summary of today.",
+      "intent_id": "DAILY_PROGRESS",
+      "applicable_states": [
+        "TODAY_COMPLETE"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-085",
+      "text": "How was my week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-086",
+      "text": "Show weekly progress.",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-087",
+      "text": "How many habits did I complete this week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-088",
+      "text": "What is my weekly completion rate?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-089",
+      "text": "Which habit went best this week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-090",
+      "text": "Which habit needs attention this week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-091",
+      "text": "What did I miss this week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-092",
+      "text": "Summarize the last seven days.",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-093",
+      "text": "How consistent was I this week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-094",
+      "text": "What changed this week?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-095",
+      "text": "Was this a good week for reading?",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-096",
+      "text": "Give me a weekly habit review.",
+      "intent_id": "WEEKLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-097",
+      "text": "How was my month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-098",
+      "text": "Show my monthly summary.",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-099",
+      "text": "What is my completion rate this month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-100",
+      "text": "Which habit improved this month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-101",
+      "text": "Which habit declined this month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-102",
+      "text": "How many scheduled activities did I finish this month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-103",
+      "text": "Did I improve compared with last month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-104",
+      "text": "What were my strongest days this month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-105",
+      "text": "Which habit needs attention this month?",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-106",
+      "text": "Show my monthly consistency.",
+      "intent_id": "MONTHLY_PROGRESS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-107",
+      "text": "Was this week better than last week?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-108",
+      "text": "Compare this month with last month.",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-109",
+      "text": "Did my workout consistency improve?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-110",
+      "text": "How does today compare with yesterday?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-111",
+      "text": "Was last week more consistent?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-112",
+      "text": "How have my habits changed over time?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-113",
+      "text": "Compare my last two weeks.",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-114",
+      "text": "Which habits improved since last month?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-115",
+      "text": "Which habits declined between periods?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-116",
+      "text": "Am I getting more consistent?",
+      "intent_id": "PERIOD_COMPARISON",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-117",
+      "text": "What is my current streak?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-118",
+      "text": "What is my longest streak?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-119",
+      "text": "How long have I kept up reading?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-120",
+      "text": "Did my streak break?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-121",
+      "text": "Why did my streak reset?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-122",
+      "text": "Does skipping break a streak?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-123",
+      "text": "Does pausing affect my streak?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-124",
+      "text": "Which habit has the longest streak?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-125",
+      "text": "How is my streak calculated?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-126",
+      "text": "Can I recover a broken streak?",
+      "intent_id": "STREAKS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-127",
+      "text": "Which day is hardest for my workout habit?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-128",
+      "text": "Do I miss habits more on weekends?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-129",
+      "text": "Is my consistency declining?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-130",
+      "text": "Which habit is becoming less consistent?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-131",
+      "text": "Are my missed days repeating?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-132",
+      "text": "What patterns do you see in reading?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-133",
+      "text": "Do I complete more habits early in the week?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-134",
+      "text": "When does my workout consistency drop?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-135",
+      "text": "Is there a pattern in my missed activities?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-136",
+      "text": "What changed in my habit history?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-137",
+      "text": "What does the data actually show?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-138",
+      "text": "Is there enough history to see a trend?",
+      "intent_id": "PATTERN_ANALYSIS",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-139",
+      "text": "What should I improve first?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-140",
+      "text": "How can I make reading easier to maintain?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-141",
+      "text": "What can I try differently next week?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-142",
+      "text": "Can you suggest a smaller version of my habit?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-143",
+      "text": "What might help me remember my workout?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-144",
+      "text": "Which habit should get my attention?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-145",
+      "text": "What is one practical change I could test?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-146",
+      "text": "Can I adjust my schedule to improve consistency?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-147",
+      "text": "How can I recover after missed days?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-148",
+      "text": "What is a realistic next experiment?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-149",
+      "text": "How do I build a sustainable routine?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-150",
+      "text": "Can you recommend an improvement based on my data?",
+      "intent_id": "IMPROVEMENT_RECOMMENDATION",
+      "applicable_states": [
+        "DECLINING_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-151",
+      "text": "Why did you recommend this?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-152",
+      "text": "Which data supports that suggestion?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-153",
+      "text": "Is this suggestion based on my history?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-154",
+      "text": "How confident are you about this pattern?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-155",
+      "text": "What else could I try?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-156",
+      "text": "Can you explain the recommendation simply?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-157",
+      "text": "Is this a guaranteed fix?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-158",
+      "text": "What happens if I ignore the suggestion?",
+      "intent_id": "RECOMMENDATION_EXPLANATION",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-159",
+      "text": "Where did I leave off?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-160",
+      "text": "What habits was I tracking?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-161",
+      "text": "How was I doing before my break?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-162",
+      "text": "What is scheduled today after my break?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-163",
+      "text": "How can I restart my routine?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-164",
+      "text": "Can you summarize my previous progress?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-165",
+      "text": "Which habits have recent activity?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-166",
+      "text": "Do I have enough recent data for new insights?",
+      "intent_id": "RETURNING_USER",
+      "applicable_states": [
+        "RETURNING_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-167",
+      "text": "Which habits am I most consistent with?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-168",
+      "text": "What progress have I maintained?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-169",
+      "text": "Is my reading consistency steady?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-170",
+      "text": "How did this month compare with the last?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-171",
+      "text": "What should I review next?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-172",
+      "text": "Is there anything that needs attention?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-173",
+      "text": "Can you summarize my strongest habits?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-174",
+      "text": "What could I experiment with next?",
+      "intent_id": "HIGH_CONSISTENCY",
+      "applicable_states": [
+        "HIGH_CONSISTENCY"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-175",
+      "text": "How do I set a reminder?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-176",
+      "text": "When is my reading reminder?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-177",
+      "text": "Can I change the reminder time?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-178",
+      "text": "Why did I not get a notification?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-179",
+      "text": "Can I disable reminders?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-180",
+      "text": "Does this habit have a reminder?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-181",
+      "text": "Where are notification settings?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-182",
+      "text": "Can I set different reminders on different days?",
+      "intent_id": "REMINDERS",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-183",
+      "text": "Where is the progress dashboard?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-184",
+      "text": "How do I view habit history?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-185",
+      "text": "How do I open habit details?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-186",
+      "text": "Where can I edit my profile?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-187",
+      "text": "How do I see weekly analytics?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-188",
+      "text": "How do I find the Today screen?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-189",
+      "text": "How can I update a habit?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-190",
+      "text": "Where can I manage notifications?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-191",
+      "text": "How do I read AI recommendations?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-192",
+      "text": "What does the progress chart mean?",
+      "intent_id": "APP_HELP",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-193",
+      "text": "Why is there no trend yet?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-194",
+      "text": "Why can’t you analyze my consistency?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-195",
+      "text": "Do I need more days of tracking?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-196",
+      "text": "Why is the progress chart empty?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-197",
+      "text": "Can you tell me why I missed yesterday?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-198",
+      "text": "Why is the AI not giving recommendations?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-199",
+      "text": "How much history do you need?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-200",
+      "text": "Can you guess my completion rate?",
+      "intent_id": "INSUFFICIENT_DATA",
+      "applicable_states": [
+        "NEW_USER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-201",
+      "text": "Does skipping count as missed?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-202",
+      "text": "Does pausing affect completion rate?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-203",
+      "text": "Can I complete yesterday’s habit today?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-204",
+      "text": "What happens to old progress when I edit the schedule?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-205",
+      "text": "Will deleting a habit erase its history?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-206",
+      "text": "Can I change a past completion?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-207",
+      "text": "How do timezone changes affect Today?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-208",
+      "text": "Does an archived habit still count toward my stats?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-209",
+      "text": "What happens when I log completion twice?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-210",
+      "text": "Will my offline updates sync automatically?",
+      "intent_id": "PRODUCT_RULE_UNRESOLVED",
+      "applicable_states": [
+        "ACTIVE_TRACKER"
+      ],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-211",
+      "text": "Hi",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-212",
+      "text": "Hello Routiq",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-213",
+      "text": "Good morning",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-214",
+      "text": "How are you?",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-215",
+      "text": "Thanks",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-216",
+      "text": "Thank you for helping",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-217",
+      "text": "Bye",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-218",
+      "text": "What can I ask you?",
+      "intent_id": "CASUAL_CONVERSATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-219",
+      "text": "Who is the president?",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-220",
+      "text": "Tell me about dinosaurs.",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-221",
+      "text": "Write a Python program.",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-222",
+      "text": "Explain quantum physics.",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-223",
+      "text": "Tell me a joke.",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-224",
+      "text": "Write an email to my manager.",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-225",
+      "text": "What is the capital of Japan?",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-226",
+      "text": "Who invented the telephone?",
+      "intent_id": "IRRELEVANT_GENERAL_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-227",
+      "text": "What is the weather now?",
+      "intent_id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-228",
+      "text": "Who won the cricket match?",
+      "intent_id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-229",
+      "text": "What is Bitcoin worth?",
+      "intent_id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-230",
+      "text": "What is the latest news?",
+      "intent_id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-231",
+      "text": "When is the next train?",
+      "intent_id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-232",
+      "text": "What is the current stock price?",
+      "intent_id": "REAL_TIME_EXTERNAL_INFORMATION",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-233",
+      "text": "Do I have ADHD because I miss habits?",
+      "intent_id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-234",
+      "text": "Am I depressed?",
+      "intent_id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-235",
+      "text": "Should I stop my medication?",
+      "intent_id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-236",
+      "text": "Why am I always tired?",
+      "intent_id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-237",
+      "text": "Can my missed workouts diagnose anxiety?",
+      "intent_id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-238",
+      "text": "What medicine should I take?",
+      "intent_id": "MEDICAL_OR_DIAGNOSTIC_QUERY",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-239",
+      "text": "Make up my completion rate.",
+      "intent_id": "FABRICATED_DATA_REQUEST",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-240",
+      "text": "Just guess my streak.",
+      "intent_id": "FABRICATED_DATA_REQUEST",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-241",
+      "text": "Invent a reason why I missed workouts.",
+      "intent_id": "FABRICATED_DATA_REQUEST",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-242",
+      "text": "Pretend I completed everything yesterday.",
+      "intent_id": "FABRICATED_DATA_REQUEST",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-243",
+      "text": "Tell me a trend even without records.",
+      "intent_id": "FABRICATED_DATA_REQUEST",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-244",
+      "text": "What is the weather and what habits are left today?",
+      "intent_id": "MULTI_INTENT",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-245",
+      "text": "Show weekly progress and tell me what to improve.",
+      "intent_id": "MULTI_INTENT",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-246",
+      "text": "How was my month and which habit declined?",
+      "intent_id": "MULTI_INTENT",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-247",
+      "text": "Say hello and show my workout history.",
+      "intent_id": "MULTI_INTENT",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-248",
+      "text": "Tell me the cricket score and summarize my week.",
+      "intent_id": "MULTI_INTENT",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-249",
+      "text": "What is my streak and does skipping break it?",
+      "intent_id": "MULTI_INTENT",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-250",
+      "text": "What habit data can the AI see?",
+      "intent_id": "PRIVACY_AND_DATA",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-251",
+      "text": "Does Routiq store my conversations?",
+      "intent_id": "PRIVACY_AND_DATA",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-252",
+      "text": "Can I delete my chat history?",
+      "intent_id": "PRIVACY_AND_DATA",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-253",
+      "text": "Who can access my habit records?",
+      "intent_id": "PRIVACY_AND_DATA",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-254",
+      "text": "Can I opt out of AI recommendations?",
+      "intent_id": "PRIVACY_AND_DATA",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    },
+    {
+      "id": "Q-255",
+      "text": "Can I export my habit history?",
+      "intent_id": "PRIVACY_AND_DATA",
+      "applicable_states": [],
+      "status": "PROPOSED_TEST_UTTERANCE"
+    }
+  ],
+  "contextual_question_intents": {
+    "TODAY": [
+      "TODAY_OVERVIEW",
+      "DAILY_PROGRESS",
+      "COMPLETION_STATUS"
+    ],
+    "PROGRESS": [
+      "WEEKLY_PROGRESS",
+      "MONTHLY_PROGRESS",
+      "PERIOD_COMPARISON",
+      "PATTERN_ANALYSIS"
+    ],
+    "HABIT_DETAIL": [
+      "PATTERN_ANALYSIS",
+      "MISSED_HABITS",
+      "IMPROVEMENT_RECOMMENDATION",
+      "STREAKS"
+    ]
+  },
+  "out_of_scope_handling": {
+    "supported_relevant": "Answer only with sufficient authorized data and approved rules",
+    "insufficient_data": "Acknowledge unavailable evidence; do not guess",
+    "unresolved_product_rule": "Do not invent; explain capability limitation and flag for product decision",
+    "irrelevant_general": "Brief polite redirection to Routiq habits and progress",
+    "real_time_external": "State no live external access unless explicitly integrated",
+    "casual": "Brief natural reply, optionally offer Routiq help",
+    "medical": "Do not diagnose; respond supportively and encourage appropriate professional help when indicated",
+    "fabrication": "Do not fabricate data"
+  },
+  "multi_intent_handling": {
+    "enabled": true,
+    "policy": "Split into independently authorized subrequests; answer supported subrequests; briefly explain unsupported parts; never let irrelevant subrequests trigger habit data retrieval"
+  },
+  "intent_confidence": {
+    "policy": "Use confidence as a routing heuristic, not calibrated probability",
+    "thresholds": "TBD_EVALUATION",
+    "ambiguous": "Ask targeted clarification instead of guessing"
+  },
+  "behavior_detection": {
+    "data_source": "Authorized Routiq application services",
+    "not_personas": true,
+    "allow_multiple_states": true,
+    "unknown_threshold_behavior": "Return UNDETERMINED; do not assert state"
+  },
+  "crewai_flow": [
+    "validate_request",
+    "classify_scope",
+    "classify_intents",
+    "resolve_screen_context",
+    "detect_behavior",
+    "authorize_and_fetch_data",
+    "interpret_verified_data",
+    "recommend_if_supported",
+    "compose_response",
+    "validate_response"
+  ],
+  "available_tool_contracts": [
+    {
+      "name": "get_today_habits",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_user_habits",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_habit_details",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_habit_history",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_daily_progress",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_weekly_progress",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_monthly_progress",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_habit_completion_rate",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_habit_streak",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_habit_trend",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    },
+    {
+      "name": "get_attention_needed_habits",
+      "data_source": "Routiq application service",
+      "auth": "Server-side authenticated identity; authorize habit ownership",
+      "read_only": true,
+      "availability": "PROPOSED_INTERFACE_NOT_IMPLEMENTED"
+    }
+  ],
+  "api_contract": {
+    "method": "POST",
+    "path": "/api/v1/ai/chat",
+    "request_example": {
+      "conversation_id": null,
+      "message": "How am I doing this week?",
+      "context": {
+        "screen": "PROGRESS",
+        "habit_id": null
+      }
+    },
+    "response_example": {
+      "conversation_id": "example_conv",
+      "intent": "WEEKLY_PROGRESS",
+      "message": "Example only: Your weekly progress will appear after verified data is retrieved.",
+      "insights": [],
+      "recommendations": [],
+      "suggested_questions": [
+        "Which habit needs attention?"
+      ],
+      "actions": []
+    },
+    "security": "Never trust user_id in request body; derive from authentication; verify habit ownership"
+  },
+  "response_schema_example": {
+    "conversation_id": "string",
+    "intents": [
+      "string"
+    ],
+    "message": "string",
+    "behavior_context": [
+      {
+        "state": "string",
+        "evidence": [],
+        "confidence": "UNDETERMINED"
+      }
+    ],
+    "insights": [
+      {
+        "type": "string",
+        "description": "string",
+        "evidence": {
+          "source": "authorized_service",
+          "period": "string",
+          "metrics": {}
+        }
+      }
+    ],
+    "recommendations": [
+      {
+        "title": "string",
+        "description": "string",
+        "type": "OPTIONAL_EXPERIMENT"
+      }
+    ],
+    "suggested_questions": [
+      {
+        "text": "string",
+        "intent_id": "string"
+      }
+    ],
+    "actions": [],
+    "limitations": []
+  },
+  "guardrails": {
+    "no_fabricated_activity": true,
+    "no_fabricated_metrics": true,
+    "no_fabricated_missed_reasons": true,
+    "no_inferred_psychological_causes": true,
+    "no_medical_diagnosis": true,
+    "no_automatic_habit_mutation": true,
+    "no_llm_generated_sql": true,
+    "require_backend_authorization": true,
+    "respect_insufficient_data": true,
+    "recommendations_as_experiments": true,
+    "protect_secrets": true,
+    "treat_user_content_as_untrusted": true,
+    "require_product_decisions_before_enabling_unresolved_features": true
+  },
+  "open_product_decisions": [
+    "Skip/pause/streak calculation",
+    "Schedule-edit effect on historical analytics",
+    "Archive/delete history",
+    "Timezone/day boundary/backdating",
+    "Offline sync and duplicate activities",
+    "AI data permissions, retention and consent",
+    "Minimum data sufficiency",
+    "Decline/high-consistency thresholds",
+    "Conversational AI entry point and approval",
+    "Account and export/delete rules"
+  ],
+  "evaluation": {
+    "source": "sample_questions",
+    "assertions": [
+      "intent routing",
+      "scope classification",
+      "multi-intent decomposition",
+      "no fabricated data",
+      "correct contextual disambiguation",
+      "no unauthorized tool access"
+    ],
+    "mock_first": true,
+    "no_live_api_calls_for_static_tests": true
+  }
+}
