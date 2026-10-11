@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: routiq-tracker
+Version: 0.1.0
+Requires-Python: <3.13,>=3.12
+Requires-Dist: fastapi==0.143.0
+Requires-Dist: pydantic==2.12.5
+Requires-Dist: uvicorn==0.54.0
+Requires-Dist: tzdata==2026.5
+Provides-Extra: test
+Requires-Dist: pytest==9.1.1; extra == "test"
+Requires-Dist: httpx==0.28.1; extra == "test"
