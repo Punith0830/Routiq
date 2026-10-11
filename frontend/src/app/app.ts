@@ -11,6 +11,7 @@ interface ChatEntry {role:'user'|'coach';text:string;source?:string;choices?:Rep
 export class App {
   private readonly api = inject(TrackerService);
   readonly isDemo=this.api.isDemo;
+  readonly isAssignment=this.api.isAssignment;
   private readonly destroy = inject(DestroyRef);
   readonly tab=signal<'today'|'progress'|'coach'>('today');
   readonly overview=signal<Overview|null>(null);

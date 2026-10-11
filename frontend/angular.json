@@ -48,6 +48,23 @@
                   "maximumError": "750kB"
                 }
               ]
+            },
+            "assignment": {
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "with": "src/app/core/tracker.assignment.service.ts",
+                  "replace": "src/app/core/tracker.service.ts"
+                }
+              ],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "750kB"
+                }
+              ],
+              "outputPath": "dist/routiq-assignment"
             }
           },
           "defaultConfiguration": "production"

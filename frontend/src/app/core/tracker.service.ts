@@ -4,6 +4,7 @@ import {Habit, Overview, Progress, Reply} from './tracker.models';
 export type {Habit, Overview, Progress, Reply} from './tracker.models';
 @Injectable({providedIn:'root'})
 export class TrackerService {
+  readonly isAssignment:boolean=false;
   readonly isDemo=false;
   private readonly http=inject(HttpClient);
   private readonly headers=new HttpHeaders({'X-Routiq-Timezone':Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'});

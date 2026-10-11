@@ -8,6 +8,7 @@ const normalize=(s:string)=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[^
 
 @Injectable({providedIn:'root'})
 export class TrackerService {
+  readonly isAssignment:boolean=false;
   readonly isDemo=true;
   private readonly key='routiq-tab-demo-v1';
   private data:DemoData={zone:Intl.DateTimeFormat().resolvedOptions().timeZone||'UTC',habits:[],checks:[]};
