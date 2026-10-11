@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json", "version": 1,
+  "cli": { "analytics": false },
+  "projects": { "routiq": {
+    "projectType": "application", "root": "", "sourceRoot": "src",
+    "architect": {
+      "build": { "builder": "@angular/build:application", "options": {
+        "browser": "src/main.ts", "index": "src/index.html", "tsConfig": "tsconfig.app.json", "styles": ["src/tracker.scss"],
+        "outputPath": "dist/routiq"
+      }, "configurations": { "production": { "outputHashing": "all", "budgets": [{"type":"initial","maximumWarning":"500kB","maximumError":"750kB"}] } }, "defaultConfiguration": "production" },
+      "serve": { "builder": "@angular/build:dev-server", "options": { "buildTarget": "routiq:build", "proxyConfig": "proxy.conf.json" } }
+    }
+  } }
+}
