@@ -21,6 +21,13 @@ class FAQCoach:
         self.stop = set('a an the i my me you your can could would should do does how what which is are am was were it this that to for of on in and with please show tell about'.split())
 
     def respond(self, message: str, habits, zone: str):
+        return self.with_suggestions(message, self._respond(message, habits, zone))
+
+    def with_suggestions(self, message: str, reply: ChatReply):
+        from app.coach_suggestions import related_questions
+        return reply.model_copy(update={'suggestions': related_questions(message, reply, self.questions)})
+
+    def _respond(self, message: str, habits, zone: str):
         # Do not retain or echo user input in service logs or persistent storage.
         if re.search(r"sk-[\w-]{8,}|api.?key|password|ignore.{0,35}instructions|reveal.{0,35}prompt", message, re.I):
             return ChatReply(message="Please keep credentials private. I cannot reveal private instructions or invent activity, but I’m happy to help with a Routiq habit question.", source="scope_limit")

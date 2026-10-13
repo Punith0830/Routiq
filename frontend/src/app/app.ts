@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import { Habit, Overview, Progress, Reply, TrackerService } from './core/tracker.service';
+import { CoachSuggestions } from './core/coach-suggestions';
 interface ChatEntry {role:'user'|'coach';text:string;source?:string;choices?:Reply['choices'];}
 
 @Component({
@@ -24,7 +25,8 @@ export class App {
   readonly pending=signal(new Set<string>());readonly chatting=signal(false);readonly chatError=signal('');
   readonly chat=signal<ChatEntry[]>([{role:'coach',text:'Hi, I’m your Routiq Coach. Ask about today’s habits or explore a small habit idea. I use prepared answers and saved Today records; live AI is off.'}]);
   name='';description='';message='';
-  readonly samples=['How am I doing today?','What is still pending?','Can you suggest a small starting habit?','How can I make reading easier to maintain?'];
+  private readonly suggestions = new CoachSuggestions();
+  readonly samples=signal(this.suggestions.reset());
   constructor(){
     this.load();const resume=()=>{if(!document.hidden)this.load();};
     document.addEventListener('visibilitychange',resume);window.addEventListener('focus',resume);
@@ -64,11 +66,11 @@ export class App {
     text=text.trim();if(!text||this.chatting())return;if(text.length>4000){this.chatError.set('Keep your question under 4,000 characters.');return;}
     this.chatting.set(true);this.chatError.set('');this.message=text;
     this.api.chat(text).pipe(takeUntilDestroyed(this.destroy)).subscribe({
-      next:reply=>{this.chat.update(items=>[...items,{role:'user',text},{role:'coach',text:reply.message,source:reply.source,choices:reply.choices}]);this.message='';this.chatting.set(false);setTimeout(()=>document.getElementById('chat-end')?.scrollIntoView({behavior:'auto',block:'nearest'}),0);},
+      next:reply=>{this.samples.set(this.suggestions.next(text,reply));this.chat.update(items=>[...items,{role:'user',text},{role:'coach',text:reply.message,source:reply.source,choices:reply.choices}]);this.message='';this.chatting.set(false);setTimeout(()=>document.getElementById('chat-end')?.scrollIntoView({behavior:'auto',block:'nearest'}),0);},
       error:()=>{this.chatting.set(false);this.chatError.set('The Coach couldn’t respond. Your question is still here; try sending again.');}
     });
   }
-  resetChat(){if(!this.chatting()){this.chat.set([{role:'coach',text:'A fresh start. What would you like to work on?'}]);this.chatError.set('');this.message='';}}
+  resetChat(){if(!this.chatting()){this.samples.set(this.suggestions.reset());this.chat.set([{role:'coach',text:'A fresh start. What would you like to work on?'}]);this.chatError.set('');this.message='';}}
   dateLabel(value:string){return new Date(value+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});}
   shortDay(value:string){return new Date(value+'T12:00:00').toLocaleDateString(undefined,{weekday:'short'});}
   activityTotal(){return this.overview()?.recent_days.reduce((sum,day)=>sum+day.completed,0)??0;}

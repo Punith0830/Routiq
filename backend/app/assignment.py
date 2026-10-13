@@ -45,16 +45,18 @@ def create_assignment_app(origins=None, hosts=None):
 
     @app.post('/api/coach/chat', response_model=ChatReply)
     def chat(body: ChatInput):
+        def attach(reply):
+            return coach.with_suggestions(body.message, reply)
         text = normalize(body.message)
         question = coach.by_text.get(text)
         today_ids = {'Q-011','Q-012','Q-013','Q-014','Q-015','Q-016','Q-017','Q-021','Q-055','Q-075','Q-077','Q-078','Q-081','Q-082','Q-083','Q-084'}
         if text in {'how am i doing today','today progress','what habits are left today','remaining habits','show today habits','what is still pending'} or question and question['id'] in today_ids:
-            return ChatReply(message='Your Today dashboard summarizes the test habits in this browser tab. This FAQ server cannot read your habit records.', source='scope_limit', question_id=question['id'] if question else None)
+            return attach(ChatReply(message='Your Today dashboard summarizes the test habits in this browser tab. This FAQ server cannot read your habit records.', source='scope_limit', question_id=question['id'] if question else None))
         privacy = {'what habit data can the ai see', 'who can access my habit records', 'does routiq store my conversations', 'can i delete my chat history'}
         if text in privacy:
-            return ChatReply(message='Test habits stay in your browser tab. Coach questions are sent to the Render FAQ server for prepared answers; the application does not save conversations or call OpenAI. New chat clears the displayed conversation. Please use sample information only.', source='application_help', question_id=question['id'] if question else None)
+            return attach(ChatReply(message='Test habits stay in your browser tab. Coach questions are sent to the Render FAQ server for prepared answers; the application does not save conversations or call OpenAI. New chat clears the displayed conversation. Please use sample information only.', source='application_help', question_id=question['id'] if question else None))
         if text in {'bye', 'goodbye', 'exit'}:
-            return ChatReply(message='Thank you for trying Routiq. You can return to Today or close this tab whenever you like.', source='application_help', question_id=question['id'] if question else None)
+            return attach(ChatReply(message='Thank you for trying Routiq. You can return to Today or close this tab whenever you like.', source='application_help', question_id=question['id'] if question else None))
         return coach.respond(body.message, None, 'UTC')
 
     return app

@@ -71,3 +71,4 @@ class ChatReply(StrictModel):
     source: Literal["verified_local_data", "prepared_faq", "application_help", "clarification", "scope_limit"]
     choices: list[Choice] = Field(default_factory=list)
     question_id: str | None = None
+    suggestions: list[Choice] = Field(default_factory=list, max_length=4)
