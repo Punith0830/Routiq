@@ -1,0 +1,68 @@
+{
+  "rewards": [
+    {
+      "id": "FEATURE-REWARDS-1",
+      "question": "How do points work?"
+    },
+    {
+      "id": "FEATURE-REWARDS-2",
+      "question": "How are milestones earned?"
+    },
+    {
+      "id": "FEATURE-REWARDS-3",
+      "question": "What happens to points when I undo?"
+    },
+    {
+      "id": "FEATURE-REWARDS-4",
+      "question": "Can I turn rewards off?"
+    },
+    {
+      "id": "FEATURE-REWARDS-5",
+      "question": "Does missing a day erase my points?"
+    }
+  ],
+  "reminders": [
+    {
+      "id": "FEATURE-REMINDERS-1",
+      "question": "How do I set a reminder?"
+    },
+    {
+      "id": "FEATURE-REMINDERS-2",
+      "question": "Can I snooze a reminder?"
+    },
+    {
+      "id": "FEATURE-REMINDERS-3",
+      "question": "How do quiet hours work?"
+    },
+    {
+      "id": "FEATURE-REMINDERS-4",
+      "question": "Will reminders work when Routiq is closed?"
+    },
+    {
+      "id": "FEATURE-REMINDERS-5",
+      "question": "Do completed habits get reminders?"
+    }
+  ],
+  "settings": [
+    {
+      "id": "FEATURE-SETTINGS-1",
+      "question": "How do I change the theme?"
+    },
+    {
+      "id": "FEATURE-SETTINGS-2",
+      "question": "How do I edit my local profile?"
+    },
+    {
+      "id": "FEATURE-SETTINGS-3",
+      "question": "Where is the application version?"
+    },
+    {
+      "id": "FEATURE-SETTINGS-4",
+      "question": "Can I reduce animations?"
+    },
+    {
+      "id": "FEATURE-SETTINGS-5",
+      "question": "Are settings synced across devices?"
+    }
+  ]
+}

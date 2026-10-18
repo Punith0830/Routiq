@@ -33,6 +33,10 @@ class FAQCoach:
             return ChatReply(message="Please keep credentials private. I cannot reveal private instructions or invent activity, but I’m happy to help with a Routiq habit question.", source="scope_limit")
         text = normalize(message)
         q = self.by_text.get(text)
+        from app.preferences import feature_help
+        help_text = feature_help(message)
+        if help_text:
+            return ChatReply(message=help_text, source='application_help', question_id=q['id'] if q else None)
         aliases = {'how am i doing today', 'today progress', 'what habits are left today', 'remaining habits', 'show today habits'}
         today_ids = {'Q-011','Q-012','Q-013','Q-014','Q-015','Q-016','Q-017','Q-021','Q-055','Q-075','Q-077','Q-078','Q-081','Q-082','Q-083','Q-084'}
         if text in aliases or q and q['id'] in today_ids:
@@ -59,18 +63,18 @@ class FAQCoach:
             'can i undo completion': 'Use Undo completion beside the completed habit on Today.',
             'how do i edit a habit': 'Choose Edit beside a habit on Today. Update its name or description and save. Its recorded activity stays attached to the same habit.',
             'where is the progress dashboard': 'Happy to guide you! Open Today for daily metrics and a seven-day check-in chart. Open Progress to see saved completion activity for the last 30 days.',
-            'what habit data can the ai see': 'Thank you for checking how your data is used. This local Coach reads today’s habit names and saved completion states when answering a supported Today question. It does not send them to OpenAI. Live AI is off.',
+            'what habit data can the ai see': 'Thank you for checking how your data is used. This local AI Assist reads today’s habit names and saved completion states when answering a supported Today question. It does not send them to OpenAI. Live AI is off.',
             'does routiq store my conversations': 'Thank you for asking about your privacy. Chat messages stay temporarily in this browser tab. They are not written to the backend database and clear on reload.',
-            'can i delete my chat history': 'Yes—choose New chat to clear the displayed conversation. Chat is not persisted by this initial application.',
+            'can i delete my chat history': 'Reload the page to clear the displayed conversation. Chat is not persisted by this initial application.',
             'who can access my habit records': 'This is a single-user local application. Records are in its SQLite file on this computer. Anyone with access to that file or the running local service may access them; account isolation is not implemented.',
-            'can i opt out of ai recommendations': 'Live AI is off in this initial application. You can use habit tracking without opening Coach.',
+            'can i opt out of ai recommendations': 'Live AI is off in this initial application. You can use habit tracking without opening AI Assist.',
             'can i export my habit history': 'Thank you for asking. Export is not included in this initial release, but you can review saved completion activity in Progress.'
         }
         if text in help_map:
             return ChatReply(message=help_map[text], source="application_help", question_id=q['id'] if q else None)
         if q:
             if q['id'] != 'Q-031' and q['intent_id'] in {'APP_HELP','HABIT_CREATION_HELP','HABIT_MANAGEMENT','REMINDERS','HABIT_SCHEDULING'}:
-                return ChatReply(message="Happy to explain what’s available. This version has Today, Add/Edit habit, Progress and Coach. Habits repeat daily; reminders, custom schedules, archive and accounts are not available yet. You can use Add habit or Edit on Today to manage a name and description.", source="application_help", question_id=q['id'])
+                return ChatReply(message="Happy to explain what’s available. This version has Today, Add/Edit habit, Progress, Achievements, Settings and AI Assist. Foreground reminders are available in Settings. Custom schedules, archive and accounts are not included. You can use Add habit or Edit on Today to manage a name and description.", source="application_help", question_id=q['id'])
             if 'notebook' in q['answer'].lower() or '/live' in q['answer']:
                 return ChatReply(message="Thank you for asking. This local application uses prepared FAQ answers and can summarize saved Today records. Live AI and saved conversations are off. You’re welcome to ask about today’s habits or explore a small habit idea.", source="scope_limit", question_id=q['id'])
             if q['intent_id'] in {'DAILY_PROGRESS','WEEKLY_PROGRESS','MONTHLY_PROGRESS','PERIOD_COMPARISON','STREAKS','PATTERN_ANALYSIS','COMPLETION_STATUS','TODAY_OVERVIEW','MISSED_HABITS','HIGH_CONSISTENCY','RETURNING_USER','RECOMMENDATION_EXPLANATION'}:

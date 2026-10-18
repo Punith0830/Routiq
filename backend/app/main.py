@@ -11,6 +11,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from app.database import available, initialize
 from app.services import HabitService
 from app.coach import FAQCoach
+from app.preferences import Preferences, VERSION, read_preferences, save_preferences, rewards
 from app.schemas import HabitInput, Habit, Overview, Progress, ChatInput, ChatReply
 
 MODULE_ROOT = Path(__file__).resolve().parents[1]
@@ -74,6 +75,23 @@ def create_app(database_path: Path | None = None, clock=None) -> FastAPI:
     def progress(x_routiq_timezone: str = Header()):
         return service.progress(local_zone(x_routiq_timezone))
 
+    @application.get('/api/settings', response_model=Preferences)
+    def settings():
+        return read_preferences(service)
+
+    @application.put('/api/settings', response_model=Preferences)
+    def update_settings(body: Preferences):
+        return save_preferences(service, body)
+
+    @application.get('/api/rewards')
+    def achievements(x_routiq_timezone: str = Header()):
+        return rewards(service, local_zone(x_routiq_timezone))
+
+    @application.get('/api/version')
+    def application_version():
+        return {'version': VERSION, 'reminder_delivery': 'in_app_while_open', 'live_ai': False}
+
+    @application.post('/api/assist/chat', response_model=ChatReply)
     @application.post('/api/coach/chat', response_model=ChatReply)
     def chat(body: ChatInput, x_routiq_timezone: str = Header()):
         return coach.respond(body.message, service, local_zone(x_routiq_timezone))

@@ -86,7 +86,7 @@ def test_restart_edit_and_day_boundary(session):
     ('How do I create a habit?','application_help','Add habit'),
     ('How am I doing today?','verified_local_data','no habits yet')
     ,('What habit data can the AI see?','application_help','does not send them to OpenAI')
-    ,('Can I delete my chat history?','application_help','New chat')
+    ,('Can I delete my chat history?','application_help','Reload the page')
 ])
 def test_coach_boundaries(session,question,source,phrase):
     client,path,_=session
@@ -153,3 +153,4 @@ def test_dashboard_seven_day_window_and_midnight(session):
     assert daily['completed'] == 0 and daily['completion_percentage'] == 0
     assert daily['recent_days'][-2]['completed'] == 1
     assert sum(day['completed'] for day in daily['recent_days']) == 1
+

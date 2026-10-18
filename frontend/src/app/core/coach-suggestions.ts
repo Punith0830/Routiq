@@ -1,9 +1,14 @@
-import { FAQ } from './demo-faq';
+import { FAQ as BASE_FAQ } from './demo-faq';
+import { FEATURE_GROUPS,FEATURE_QUESTIONS } from './feature-questions';
+const FAQ=[...BASE_FAQ,...FEATURE_QUESTIONS];
 import { Reply } from './tracker.models';
 
 const STARTERS = ['How am I doing today?', 'What is still pending?', 'Can you suggest a small starting habit?', 'How can I make reading easier to maintain?'];
-type Topic = 'today' | 'reading' | 'workout' | 'setup' | 'privacy' | 'general';
+type Topic = 'today' | 'reading' | 'workout' | 'setup' | 'privacy' | 'general' | 'rewards' | 'reminders' | 'settings';
 const groups: Record<Topic, string[]> = {
+  rewards: FEATURE_GROUPS.rewards.map(q=>q.id),
+  reminders: FEATURE_GROUPS.reminders.map(q=>q.id),
+  settings: FEATURE_GROUPS.settings.map(q=>q.id),
   today: ['Q-014','Q-015','Q-077','Q-083','Q-011','Q-017','Q-021','Q-055','Q-078','Q-082','Q-084','Q-012'],
   reading: ['Q-140','Q-142','Q-145','Q-147','Q-024','Q-044','Q-148','Q-031','Q-028','Q-029'],
   workout: ['Q-143','Q-142','Q-145','Q-147','Q-148','Q-031','Q-139','Q-141'],
@@ -35,6 +40,9 @@ export class CoachSuggestions {
     let topic: Topic = 'general';
     if (!sensitive) {
       if (reply.source === 'verified_local_data') topic = 'today';
+      else if (/\b(points?|rewards?|milestones?|gamification|badges)\b/.test(text)) topic = 'rewards';
+      else if (/\b(reminders?|notifications?|snooze|quiet hours)\b/.test(text)) topic = 'reminders';
+      else if (/\b(themes?|settings|profile|version|animations|synced)\b/.test(text)) topic = 'settings';
       else if (/\b(read|reading|book|books)\b/.test(text)) topic = 'reading';
       else if (/\b(workout|exercise|fitness)\b/.test(text)) topic = 'workout';
       else if (/\b(privacy|data|conversation|conversations|chat history|export|access|opt out)\b/.test(text)) topic = 'privacy';

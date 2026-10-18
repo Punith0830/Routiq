@@ -1,6 +1,6 @@
 from datetime import date
 from typing import Literal
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class StrictModel(BaseModel):
@@ -10,8 +10,11 @@ class StrictModel(BaseModel):
 class HabitInput(StrictModel):
     name: str = Field(min_length=1, max_length=80)
     description: str = Field(default="", max_length=300)
+    reason: str = Field(default="", max_length=300)
+    small_action: str = Field(default="", max_length=300)
+    cue: str = Field(default="", max_length=300)
 
-    @field_validator("name", "description", mode="before")
+    @field_validator("name", "description", "reason", "small_action", "cue", mode="before")
     @classmethod
     def trim(cls, value):
         return value.strip() if isinstance(value, str) else value

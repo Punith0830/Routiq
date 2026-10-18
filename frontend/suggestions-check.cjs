@@ -2,8 +2,9 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),ts=require('typescript'),rxjs=require('rxjs');
 const compile=path=>ts.transpile(fs.readFileSync(path,'utf8'),{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS,experimentalDecorators:true});
 const faqContext={exports:{}};vm.runInNewContext(compile('src/app/core/demo-faq.ts'),faqContext);
-const FAQ=faqContext.exports.FAQ;
-const pickerContext={exports:{},require:p=>p==='./demo-faq'?faqContext.exports:{}};
+const featureContext={exports:{}};vm.runInNewContext(compile('src/app/core/feature-questions.ts'),featureContext);
+const FAQ=[...faqContext.exports.FAQ,...featureContext.exports.FEATURE_QUESTIONS];
+const pickerContext={exports:{},require:p=>p==='./demo-faq'?faqContext.exports:p==='./feature-questions'?featureContext.exports:{}};
 vm.runInNewContext(compile('src/app/core/coach-suggestions.ts'),pickerContext);
 const Picker=pickerContext.exports.CoachSuggestions;
 const reply=(id=null,source='prepared_faq',choices=[])=>({question_id:id,source,choices,message:'Synthetic reply'});
@@ -27,10 +28,12 @@ const serverReply=reply('Q-140');serverReply.suggestions=[{id:'Q-142',question:'
 const fromServer=[...picker.next(starters[3],serverReply)];check(fromServer);
 assert(fromServer.includes(FAQ.find(q=>q.id==='Q-142').question));assert(!fromServer.includes('Untrusted replacement text'));assert(!fromServer.includes('Not in the FAQ'));
 check(picker.next('What else?',{...reply(),suggestions:[{id:'Q-143',question:'Unrelated server topic'}]}));
+const prefContext={exports:{}};vm.runInNewContext(compile('src/app/core/preferences.ts'),prefContext);
+const {defaultPreferences,validatePreferences}=prefContext.exports;
 let fail=false;
-const service={isDemo:true,isAssignment:false,overview:()=>rxjs.of({habits:[],today:'test'}),progress:()=>rxjs.of({history:[]}),chat:text=>fail?rxjs.throwError(()=>Error('test outage')):rxjs.of(reply(text.includes('reading')?'Q-140':'Q-143'))};
+const service={isDemo:true,isAssignment:false,overview:()=>rxjs.of({habits:[],today:'test'}),progress:()=>rxjs.of({history:[]}),settings:()=>rxjs.of(defaultPreferences()),rewards:()=>rxjs.of({points:0,recorded:0,milestones:[]}),chat:text=>fail?rxjs.throwError(()=>Error('test outage')):rxjs.of(reply(text.includes('reading')?'Q-140':'Q-143'))};
 const signal=value=>{const f=()=>value;f.set=v=>value=v;f.update=fn=>value=fn(value);return f;};
-const context={exports:{},FormsModule:class{},Component:()=>x=>x,DestroyRef:class{},TrackerService:class{},inject:k=>k===context.TrackerService?service:{onDestroy:()=>{}},signal,takeUntilDestroyed:()=>x=>x,CoachSuggestions:Picker,forkJoin:rxjs.forkJoin,window:{addEventListener:()=>{},removeEventListener:()=>{},setInterval:()=>1},document:{hidden:false,addEventListener:()=>{},removeEventListener:()=>{},getElementById:()=>null},setTimeout:()=>0,clearInterval:()=>{}};
+const context={exports:{},FormsModule:class{},Component:()=>x=>x,DestroyRef:class{},TrackerService:class{},inject:k=>k===context.TrackerService?service:{onDestroy:()=>{}},signal,takeUntilDestroyed:()=>x=>x,CoachSuggestions:Picker,forkJoin:rxjs.forkJoin,window:{addEventListener:()=>{},removeEventListener:()=>{},setInterval:()=>1,matchMedia:()=>({matches:false,addEventListener:()=>{},removeEventListener:()=>{}}),scrollY:0,scrollTo:()=>{}},APP_VERSION:'test',structuredClone,defaultPreferences,validatePreferences,ForegroundReminders:class{},document:{documentElement:{style:{overflow:''},dataset:{}},hidden:false,addEventListener:()=>{},removeEventListener:()=>{},getElementById:()=>null},setTimeout:()=>0,clearInterval:()=>{}};
 const appCode=fs.readFileSync('src/app/app.ts','utf8').replace(/^import .*;$/gm,'');
 vm.runInNewContext(ts.transpile(appCode,{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS,experimentalDecorators:true}),context);
 const app=new context.exports.App();assert.deepEqual([...app.samples()],starters);
@@ -38,4 +41,4 @@ app.send(starters[3]);check(app.samples());assert.notDeepEqual([...app.samples()
 app.message='What might help me remember my workout?';app.send();check(app.samples());assert.equal(app.message,'');
 const previous=[...app.samples()];fail=true;app.message='Retry workout';app.send();assert.deepEqual([...app.samples()],previous);assert.equal(app.message,'Retry workout');assert(app.chatError());
 app.resetChat();assert.deepEqual([...app.samples()],starters);assert.equal(app.chatError(),'');
-console.log('PASS: all 255 FAQ inputs, topic changes, follow-ups, unique four-chip sets, reset and actual component success/error subscriptions.');
+console.log('PASS: all 255 FAQ inputs and 15 curated feature questions, topic changes, follow-ups, unique four-chip sets, reset and actual component success/error subscriptions.');

@@ -56,14 +56,14 @@ class HabitService:
         habit_id = str(uuid4())
         today = self.today(zone).isoformat()
         with self.connection() as db:
-            db.execute("INSERT INTO habits VALUES (?, ?, ?, ?, ?)", (habit_id, payload.name, payload.description, now, today))
+            db.execute("INSERT INTO habits (id,name,description,created_at,start_date,reason,small_action,cue) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (habit_id, payload.name, payload.description, now, today,payload.reason,payload.small_action,payload.cue))
         return {**payload.model_dump(), "id": habit_id, "created_at": now, "start_date": today, "completed": False}
 
     def update(self, habit_id: str, payload: HabitInput, zone: str):
         with self.connection() as db:
             if not db.execute("SELECT 1 FROM habits WHERE id=?", (habit_id,)).fetchone():
                 raise HTTPException(404, "Habit not found.")
-            db.execute("UPDATE habits SET name=?, description=? WHERE id=?", (payload.name, payload.description, habit_id))
+            db.execute("UPDATE habits SET name=?, description=?,reason=?,small_action=?,cue=? WHERE id=?", (payload.name, payload.description,payload.reason,payload.small_action,payload.cue, habit_id))
         return next(h for h in self.overview(zone)['habits'] if h['id'] == habit_id)
 
     def complete(self, habit_id: str, day: date, completed: bool, zone: str):
